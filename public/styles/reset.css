@@ -28,7 +28,8 @@ ol[role="list"] {
   list-style: none;
 }
 
-body {
+body,
+main {
   min-height: 100vh;
   line-height: 1.5;
 }
