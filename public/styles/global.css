@@ -1,9 +1,49 @@
-* {
+html {
   font-family: 'BIZ UDPMincho', "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #13171b;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
 .text-sm {
   font-size: 0.7rem;
   line-height: 1.2rem;
+}
+
+.text-md {
+  font-size: 0.7rem;
+  line-height: 1.2rem;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.px-sm {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
