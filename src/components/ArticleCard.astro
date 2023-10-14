@@ -1,0 +1,66 @@
+---
+interface Props {
+  title: string;
+  image: string;
+  createdAt: string;
+  url: string | undefined;
+  tags: string[];
+  isFirst: boolean;
+}
+
+const { title, image, createdAt, url, tags, isFirst } = Astro.props;
+---
+
+<div class={isFirst ? "col-12" : "col-4"}>
+  <img src={image} alt={title} />
+  <div class="px-sm">
+    <h2 class="bold">{title}</h2>
+  </div>
+  <div class="flex flex-row justify-between px-sm">
+    <div class="flex flex-row">
+      {
+        tags.map((tag) => (
+          <div class="px-sm">
+            <span class="tag text-md">#{tag}</span>
+          </div>
+        ))
+      }
+    </div>
+    <p class="text-sm text-right">
+      {createdAt.slice(0, 10).replaceAll("-", "/")}
+    </p>
+  </div>
+</div>
+
+<style>
+  .card {
+    display: grid;
+    grid-template-rows: subgrid;
+  }
+
+  .col-12 {
+    grid-area: 1/4 / auto/span 12;
+  }
+
+  .col-4 {
+    grid-column: span 4;
+    grid-row: span 12;
+  }
+
+  img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+  }
+
+  h2:hover {
+    color: #67b7b2;
+  }
+
+  .tag {
+    color: #585a63;
+  }
+
+  .tag:hover {
+    color: #5bbee5;
+  }
+</style>

@@ -1,13 +1,33 @@
 ---
 import DefaultLayout from "../layouts/Default.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import { imageConfig } from "astro:assets";
+import ArticleCard from "../components/ArticleCard.astro";
+const allPosts = await Astro.glob("../pages/posts/*.md");
 ---
 
 <DefaultLayout>
-  <main>
-    <h1>🧑‍🚀 Hello, 0maru.dev Blog!</h1>
-  </main>
+  <section class="card-container container">
+    {
+      allPosts.map((post, idx) => {
+        return (
+          <ArticleCard
+            isFirst={idx === 0}
+            title={post.frontmatter.title}
+            image={post.frontmatter.image}
+            createdAt={post.frontmatter.createdAt}
+            url={post.url}
+            tags={post.frontmatter.tags}
+          />
+        );
+      })
+    }
+  </section>
 </DefaultLayout>
+
+<style>
+  .card-container {
+    display: grid;
+    gap: 2rem;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(12, 1fr);
+  }
+</style>
