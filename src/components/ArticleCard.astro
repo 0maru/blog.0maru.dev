@@ -11,7 +11,7 @@ interface Props {
 const { title, image, createdAt, url, tags, isFirst } = Astro.props;
 ---
 
-<div class={isFirst ? "col-12" : "col-4"}>
+<div class="item">
   <img src={image} alt={title} />
   <div class="px-sm">
     <h2 class="bold">{title}</h2>
@@ -33,6 +33,12 @@ const { title, image, createdAt, url, tags, isFirst } = Astro.props;
 </div>
 
 <style>
+  .item:first-child {
+    grid-column: 1 / -1;
+  }
+  .item:nth-child(n+4) {
+    grid-row: 2;
+  }
   .card {
     display: grid;
     grid-template-rows: subgrid;
