@@ -5,7 +5,7 @@ const allPosts = await Astro.glob("../pages/posts/*.md");
 ---
 
 <DefaultLayout>
-  <section class="card-container container">
+  <section class="card-container container" style="margin-top: 3rem;">
     {
       allPosts.map((post, idx) => {
         return (
