@@ -5,20 +5,31 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
 ---
 
 <DefaultLayout>
-  <section>
-    {
-      tags.map((tag) => (
-        <a href={`/tags/${tag}`} class="tag">
-          #{tag}
-        </a>
-      ))
-    }
+  <section class="container mt-lg">
+    <h2>タグ一覧</h2>
+    <ul class="mt-lg">
+      {
+        tags.map((tag) => (
+          <li class="tag">
+            <a href={`/tags/${tag}`}><span class="hash-tag">#</span>{tag}</a>
+          </li>
+        ))
+      }
+    </ul>
   </section>
 </DefaultLayout>
 
 <style>
-  section {
-    display: flex;
-    flex-direction: column;
+  .tag {
+    display: inline-block;
+    background-color: #fafafa;
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.5rem 0;
+    border-radius: 0.5rem;
+  }
+  .hash-tag {
+    color: #7cc7e8;
+    font-weight: bold;
+    padding-right: 0.25rem;
   }
 </style>

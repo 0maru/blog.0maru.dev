@@ -68,6 +68,10 @@ li {
   padding-right: 0.5rem;
 }
 
+.mt-lg {
+  margin-top: 3rem;
+}
+
 .flex {
   display: flex;
 }
