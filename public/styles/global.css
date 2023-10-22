@@ -37,6 +37,32 @@ li {
   text-align: right;
 }
 
+.pt-sm {
+  padding-top: 0.5rem;
+}
+
+.pt-md {
+  padding-top: 1rem;
+}
+
+.pb-sm {
+  padding-bottom: 0.5rem;
+}
+
+.pb-md {
+  padding-bottom: 1rem;
+}
+
+.py-sm {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.py-md {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .px-sm {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -52,4 +78,8 @@ li {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.pointer {
+  cursor: pointer;
 }
