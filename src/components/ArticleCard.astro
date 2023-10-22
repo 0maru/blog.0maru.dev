@@ -25,7 +25,9 @@ const { title, image, createdAt, url, tags, isFirst } = Astro.props;
       {
         tags.map((tag) => (
           <div class="px-sm">
-            <span class="tag text-md pointer">#{tag}</span>
+            <a href={`/tags/${tag}`}>
+              <span class="tag text-md pointer">#{tag}</span>
+            </a>
           </div>
         ))
       }
