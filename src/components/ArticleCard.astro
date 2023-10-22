@@ -12,9 +12,13 @@ const { title, image, createdAt, url, tags, isFirst } = Astro.props;
 ---
 
 <div class="item">
-  <img src={image} alt={title} />
+  <a href={url}>
+    <img src={image} alt={title} />
+  </a>
   <div class="px-sm pt-md pb-sm">
-    <h2 class="bold">{title}</h2>
+    <a href={url}>
+      <h2 class="bold">{title}</h2>
+    </a>
   </div>
   <div class="flex flex-row justify-between px-sm">
     <div class="flex flex-row">
