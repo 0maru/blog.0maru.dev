@@ -16,6 +16,11 @@ jobs:
       - name: Checkout commit
         uses: actions/checkout@v3
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.9.2
+
       - name: Build Astro
         uses: withastro/action@v1
 
