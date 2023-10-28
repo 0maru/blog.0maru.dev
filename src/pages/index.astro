@@ -1,10 +1,11 @@
 ---
 import DefaultLayout from "../layouts/Default.astro";
 import ArticleCard from "../components/ArticleCard.astro";
+import { SITE_TITLE } from "../consts";
 const allPosts = await Astro.glob("../pages/posts/*.md");
 ---
 
-<DefaultLayout>
+<DefaultLayout title={SITE_TITLE}>
   <section class="card-container container" style="margin-top: 3rem;">
     {
       allPosts.map((post, idx) => {

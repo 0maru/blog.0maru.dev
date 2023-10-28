@@ -3,12 +3,18 @@ import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import BodyBottomScript from "../components/BodyBottomScript.astro";
 import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="ja">
   <head>
-    <BaseHead />
+    <BaseHead title={title} />
   </head>
   <body>
     <Header />
