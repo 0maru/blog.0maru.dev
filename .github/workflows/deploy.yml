@@ -45,11 +45,6 @@ jobs:
       - name: Build Astro
         run: pnpm build
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
       - name: Cloudflare Pages Deploy
         uses: cloudflare/pages-action@v1
         with:
