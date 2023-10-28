@@ -35,3 +35,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           projectName: blog-0maru-dev
+          directory: .
