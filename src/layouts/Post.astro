@@ -1,0 +1,15 @@
+---
+import DefaultLayout from "./Default.astro";
+interface Props {
+  frontmatter: {
+    title: string;
+    createdAt: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<DefaultLayout title={frontmatter.title}>
+  <slot />
+</DefaultLayout>
