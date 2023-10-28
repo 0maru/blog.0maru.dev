@@ -3,6 +3,7 @@ import DefaultLayout from "./Default.astro";
 interface Props {
   frontmatter: {
     title: string;
+    description: string;
     createdAt: string;
   };
 }
@@ -10,6 +11,6 @@ interface Props {
 const { frontmatter } = Astro.props;
 ---
 
-<DefaultLayout title={frontmatter.title}>
+<DefaultLayout title={frontmatter.title} description={frontmatter.description}>
   <slot />
 </DefaultLayout>
