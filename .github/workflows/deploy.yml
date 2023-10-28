@@ -17,11 +17,33 @@ jobs:
       - name: Checkout commit
         uses: actions/checkout@v3
 
-      - name: Build Astro
-        uses: withastro/action@v1
+      - name: SetUp Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 20.9.0
-          package-manager: pnpm@latest
+          node-version: '20.9.0'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@2.4.0
+        with:
+          version: 8.9.2
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Astro
+        run: pnpm build
 
   deploy:
     needs: build
@@ -35,4 +57,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           projectName: blog-0maru-dev
-          directory: dist
+          directory: ./dist
