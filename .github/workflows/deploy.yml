@@ -6,27 +6,27 @@ on:
       - 'main'
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v3
+
+      - name: Build Astro
+        uses: withastro/action@v1
+        with:
+          node-version: 20.9.0
+          package-manager: pnpm@latest
+
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
       deployments: write
     timeout-minutes: 10
     steps:
-      - name: Checkout commit
-        uses: actions/checkout@v3
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8.9.2
-
-      - name: Build Astro
-        uses: withastro/action@v1
-        with:
-          node-version: 20
-          package-manager: pnpm
-
       - name: Cloudflare Pages Deploy
         uses: cloudflare/pages-action@v1
         with:
