@@ -3,4 +3,5 @@
 
 export const SITE_TITLE = 'blog.0maru.dev';
 export const SITE_DESCRIPTION = '0maru のブログです。エンジニアリングとかガジェットやその他諸々について書き連ねていきます。';
+export const SITE_URL = 'https://blog.0maru.dev';
 export const IMAGE_DOMAIN = 'blog-images.0maru.dev'

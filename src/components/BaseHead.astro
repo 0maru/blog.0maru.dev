@@ -1,4 +1,6 @@
 ---
+import { SITE_URL } from "../consts";
+
 interface Props {
   title: string;
   description: string;
@@ -33,3 +35,7 @@ const { title, description } = Astro.props;
 />
 <title>{title}</title>
 <meta name="description" property="og:description" content={description} />
+<meta property="og:title" content={title} />
+<meta property="og:url" content={SITE_URL} />
+<meta property="og:locale" content="ja_JP" />
+<meta data-hid="og:type" property="og:type" content="website" />
