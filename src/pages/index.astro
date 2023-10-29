@@ -31,5 +31,10 @@ const allPosts = await Astro.glob("../pages/posts/*.md");
     grid-auto-flow: row;
     grid-template-columns: repeat(2, 1fr);
     max-width: 1000px;
+
+    @media screen and (max-width: 768px) {
+      gap: 0;
+      grid-template-columns: 1fr;
+    }
   }
 </style>

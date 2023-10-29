@@ -44,6 +44,9 @@ const { title, image, createdAt, url, tags, isFirst } = Astro.props;
   }
   .item:nth-child(n + 4) {
     grid-row: 2;
+    @media screen and (max-width: 768px) {
+      grid-row: 1 / -1;
+    }
   }
   .card {
     display: grid;
