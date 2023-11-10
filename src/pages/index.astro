@@ -6,7 +6,7 @@ const allPosts = await Astro.glob("../pages/posts/*.md");
 ---
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <section class="card-container container" style="margin-top: 3rem;">
+  <section class="card-container container px-sm" style="margin-top: 3rem;">
     {
       allPosts.map((post, idx) => {
         return (

@@ -17,7 +17,7 @@ const { title, image, createdAt, url, tags, isFirst } = Astro.props;
   </a>
   <div class="px-sm pt-md pb-sm">
     <a href={url}>
-      <h2 class="bold">{title}</h2>
+      <h2 class="bold text-wrap-pretty">{title}</h2>
     </a>
   </div>
   <div class="flex flex-row justify-between px-sm">
@@ -39,15 +39,23 @@ const { title, image, createdAt, url, tags, isFirst } = Astro.props;
 </div>
 
 <style>
+  .item {
+    @media screen and (max-width: 768px) {
+      padding-bottom: 2rem;
+    }
+  }
+
   .item:first-child {
     grid-column: 1 / -1;
   }
+
   .item:nth-child(n + 4) {
     grid-row: 2;
     @media screen and (max-width: 768px) {
       grid-row: 1 / -1;
     }
   }
+
   .card {
     display: grid;
     grid-template-rows: subgrid;
