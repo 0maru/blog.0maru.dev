@@ -68,6 +68,11 @@ li {
   padding-right: 0.5rem;
 }
 
+.px-md {
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
+
 .mt-lg {
   margin-top: 3rem;
 }
@@ -86,4 +91,8 @@ li {
 
 .pointer {
   cursor: pointer;
+}
+
+.text-wrap-pretty {
+  text-wrap: pretty;
 }
