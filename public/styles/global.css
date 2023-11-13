@@ -12,6 +12,11 @@ li {
   list-style: none;
 }
 
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
 .container {
   width: 100%;
   max-width: 1260px;
@@ -70,7 +75,7 @@ li {
 
 .px-md {
   padding-left: 1rem;
-  padding-bottom: 1rem;
+  padding-right: 1rem;
 }
 
 .mt-lg {
