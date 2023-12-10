@@ -1,33 +1,31 @@
-<header class="container">
-  <h1>blog.0maru.dev</h1>
-  <nav>
-    <ul class="flex">
-      <li><a href="/">Home</a></li>
-      <li><a href="/tags">Tags</a></li>
-      <li><a href="/about">About</a></li>
-    </ul>
-  </nav>
+<header>
+  <div class="container px-lg py-sm">
+    <p style="font-size: 1.5rem;">blog.0maru.dev</p>
+    <nav>
+      <ul class="flex">
+        <li><a href="/">Home</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <style>
   header {
+    width: 100%;
+    background-color: #ffffff;
+  }
+
+  div {
     display: flex;
-    max-width: 1260px;
-    padding-top: 1.5rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-
     @media screen and (max-width: 768px) {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
     }
-  }
-
-  h1 {
-    font-size: 1.2rem;
   }
 
   li {

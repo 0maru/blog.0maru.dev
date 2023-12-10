@@ -1,6 +1,10 @@
 html {
-  font-family: 'BIZ UDPMincho', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: system-ui, Roboto, sans-serif;
   color: #13171b;
+}
+
+body {
+  background-color: #f9f8f7;
 }
 
 a {
@@ -59,8 +63,8 @@ main {
 }
 
 .py-sm {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .py-md {
@@ -76,6 +80,11 @@ main {
 .px-md {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.px-lg {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .mt-lg {
