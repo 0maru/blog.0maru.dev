@@ -1,16 +1,67 @@
 ---
-import DefaultLayout from "./Default.astro";
+import DefaultLayout from './Default.astro'
 interface Props {
-  frontmatter: {
-    title: string;
-    description: string;
-    createdAt: string;
+  frontmatter : {
+    title : string;
+    description : string;
+    createdAt : string;
+    tags : string[];
   };
 }
 
-const { frontmatter } = Astro.props;
+const {frontmatter} = Astro.props
 ---
 
 <DefaultLayout title={frontmatter.title} description={frontmatter.description}>
-  <slot />
+  <article class="markdown-body py-md">
+    <h1>{frontmatter.title}</h1>
+    <p>{frontmatter.createdAt}</p>
+    <div class="flex flex-row">
+      {frontmatter.tags.map((tag : string) => {
+        return <a style="margin-right: 0.5rem">{tag}</a>
+      })}
+    </div>
+    <slot />
+  </article>
 </DefaultLayout>
+
+<style global>
+  .markdown-body h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
+  .markdown-body h2 {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .markdown-body h3 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
+  .markdown-body p {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .markdown-body a {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #0094C6;
+    cursor: pointer;
+  }
+
+  .markdown-body a:hover {
+    text-decoration-color: #0094C6;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+  }
+</style>
