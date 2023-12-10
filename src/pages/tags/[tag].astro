@@ -17,7 +17,7 @@ const filterdPosts = posts.filter((post) =>
 );
 ---
 
-<DefaultLayout>
+<DefaultLayout title={`${tag}の記事一覧`} description={`${tag}の記事一覧`}>
   <section class="container mt-lg">
     <h2>{tag}のタグが付いた記事</h2>
     <div class="card-container mt-lg">
