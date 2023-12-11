@@ -13,23 +13,25 @@ const {frontmatter} = Astro.props
 ---
 
 <DefaultLayout title={frontmatter.title} description={frontmatter.description}>
-  <h1 class="mt-md">{frontmatter.title}</h1>
-  <p class="mt-sm">{frontmatter.createdAt}</p>
-  <div class="flex flex-row mt-sm">
-    {frontmatter.tags.map((tag : string) => {
-      return <a class="tag">{tag}</a>
-    })}
-  </div>
-  <article class="markdown-body pt-md">
-    <slot />
-  </article>
+  <main>
+    <h1 class="mt-md">{frontmatter.title}</h1>
+    <p class="mt-sm">{frontmatter.createdAt}</p>
+    <div class="flex flex-row mt-sm">
+      {frontmatter.tags.map((tag : string) => {
+        return <a class="tag" href={`/tags/${tag}`}>{tag}</a>
+      })}
+    </div>
+    <article class="markdown-body pt-md">
+      <slot />
+    </article>
+  </main>
 </DefaultLayout>
 
 <style>
   h1 {
     font-size: 1.8rem;
     font-weight: bold;
-    line-height: 1.2;
+    line-height: 2;
   }
 
   .tag {

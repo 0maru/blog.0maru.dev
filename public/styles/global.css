@@ -5,7 +5,11 @@ html {
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: #13171b;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 li {
@@ -15,6 +19,11 @@ li {
 main {
   max-width: 1260px;
   margin: 0 auto;
+
+  @media screen and (max-width: 1260px) {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
 }
 
 .container {

@@ -8,22 +8,24 @@ const filteredPosts = allPosts.filter((e) => e.frontmatter.status == 'published'
 ---
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <section class="card-container container py-md">
-    {
-      filteredPosts.map((post, idx) => {
-        return (
-          <ArticleCard
-            isFirst={idx === 0}
-            title={post.frontmatter.title}
-            image={post.frontmatter.image}
-            createdAt={post.frontmatter.createdAt}
-            url={post.url}
-            tags={post.frontmatter.tags}
-          />
-        )
-      })
-    }
-  </section>
+  <main>
+    <section class="card-container container py-md">
+      {
+        filteredPosts.map((post, idx) => {
+          return (
+            <ArticleCard
+              isFirst={idx === 0}
+              title={post.frontmatter.title}
+              image={post.frontmatter.image}
+              createdAt={post.frontmatter.createdAt}
+              url={post.url}
+              tags={post.frontmatter.tags}
+            />
+          )
+        })
+      }
+    </section>
+  </main>
 </DefaultLayout>
 
 <style>
