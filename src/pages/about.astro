@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets'
+import DefaultLayout from '../layouts/Default.astro'
+import iconImage from '../images/icon.jpg'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
+---
+
+<DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <main>
+    <h1>プロフィール</h1>
+    <Image src={iconImage} alt="0maru" class="icon" />
+    <p class="mt-md">名前: 0maru</p>
+    <p class="mt-md">
+      普段は都内の企業でソフトウェアエンジニアをしています。<br />
+      モバイルアプリからフロントエンド、バックエンドまで幅広く事業開発をしています。<br />
+      得意なのはFlutterでのアプリ開発のはずです。<br />
+      連絡はXのDMよりお願いします。
+      <br />
+      <br />
+      Flutter / Vue / Nuxt.js / Python / Djnago / AWS
+    </p>
+    <ul>
+      <li>
+        <a href="https://x.com/0maru_dev" target="_blank">X / Twitter</a>
+      </li>
+      <li>
+        <a href="https://github.com/0maru" target="_blank">GitHub</a>
+      </li>
+    </ul>
+  </main>
+</DefaultLayout>
+
+<style>
+  body {
+    background-color: #f9f8f7;
+  }
+
+  main {
+    padding-top: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    max-width: 760px;
+    background-color: #ffffff;
+  }
+
+  .icon {
+    margin: 0 auto;
+    object-fit: fill;
+    border-radius: 10rem;
+    width: 300px;
+    height: 300px;
+  }
+
+  li {
+    list-style: inherit;
+  }
+
+  a {
+    color: #7cc7e8 !important;
+  }
+</style>
