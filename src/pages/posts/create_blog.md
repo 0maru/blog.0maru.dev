@@ -20,6 +20,9 @@ Zenn もMarkdown で書けて、管理も簡単で投げ銭のような機能も
 これなら個人ブログは閉じて Zenn に戻るのも簡単だし、Markdown に対応しているサービスにならそのまま持っていけるのと、  
 今使っている技術スタックを変えたくなったときに比較的かんたんに変えれるような仕様にしました。
 
+このプロジェクト自体は GitHub で管理していて、パブリックなリポジトリにしているのでどなたでも見ることができます。  
+https://github.com/0maru/blog.0maru.dev
+
 ## 技術選定について
 ---
 
@@ -56,7 +59,11 @@ https://pages.cloudflare.com/
 最近イケイケだということもありますが、仕事では AWS
 ばかりで他のサービスを使用することがないので慣れていない環境にチャレンジしたいと思い採用しました。  
 Google Domains がサービス終了するということもあり、ドメインをCloudflare に移管していたのでちょうどよかったです。  
-またブログ程度の使い方だとお金がかからないのもありがたいです。  
+またブログ程度の使い方だとお金がかからないのもありがたいです。
+
+このブログのドメイン自体はCloudflare で管理していて、blog.0maru.dev というサブドメインを作成して,
+Cloudflare Pages でホスティングしています。
+
 Cloudflare Pages または Cloudflare の機能を十分に使えているわけではなくて、AWS の S3
 に静的ファイルを置いているような感じになっています。  
 もう少し調べて開発体験が上がるようなことができるなら設定したいと思っています。
@@ -70,6 +77,21 @@ Cloudflare Pages はGitHubと統合することができて、push したら自�
 そのままでは使えませんでした。  
 なので、GitHub Actions を使ってmain ブランチにpush したら自動的にCloudflare Pages にデプロイするようにしました。
 
+この記事を書いている段階だと大体30秒でビルドとデプロイが完了します。
+
+デプロイのジョブを確認したい場合はGitHub Actions のworkflow を確認してください。  
+https://github.com/0maru/blog.0maru.dev/blob/main/.github/workflows/deploy.yml
+
+![GitHubActions でデプロイする](../../images/github-actions-build-project.png)
+
+### その他
+
+#### Google Analytics4
+
+UA が終了して GA4 に移行することになったのですが、未だに操作方法だったりデータの見方が曖昧で、  
+調べることが多いので合わせて勉強できるようにGA4を導入しました。
+
+タグ自体はGoogle Tag Manager で管理しています。
 
 ## さいごに
 ---

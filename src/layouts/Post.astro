@@ -64,6 +64,13 @@ const {frontmatter} = Astro.props
     line-height: 1.2;
   }
 
+  .markdown-body h4 {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
   .markdown-body p {
     margin-top: 0.5rem;
     font-size: 1rem;
@@ -82,5 +89,11 @@ const {frontmatter} = Astro.props
     text-decoration-color: #0094C6;
     text-decoration-line: underline;
     text-decoration-style: solid;
+  }
+
+  .markdown-body img {
+    margin-top: 1rem;
+    height: auto;
+    object-fit: contain;
   }
 </style>
