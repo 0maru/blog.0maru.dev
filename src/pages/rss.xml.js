@@ -1,3 +1,4 @@
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import rss from '@astrojs/rss';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
