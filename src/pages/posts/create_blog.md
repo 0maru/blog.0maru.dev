@@ -40,10 +40,8 @@ Astro を採用した理由は Markdown で書いた記事を静的な HTML に�
 が結構活発だった気がしたらから採用しました。  
 この記事を書きながらv3 からv4 に更新したので、今のところ最新の Astro を使っています。
 
-Astro を使ってみての感想ですが、MarkdownをHTMLに変換する機能が公式でサポートされていて、RSSの生成などもあってブログを作るには十分すぎるくらいの機能があります。
-下記のようにブログ記事の Markdown 一覧を取得する機能が元々備わっているので、データを取得して rss のメソッドに渡すだけです。
-
-[実際に生成されたRSS | https://blog.0maru.dev/rss.xml](https://blog.0maru.dev/rss.xml)
+Astro を使ってみての感想ですが、ブログを作るには十分すぎるくらいの機能が備わっています。
+MarkdownをHTMLに変換する機能は公式でサポートされてい、 RSSの生成など下記のように簡単に作成することが出来ます。
 
 ```javascript
 import rss from '@astrojs/rss';
@@ -64,6 +62,22 @@ export async function GET(context) {
   });
 }
 
+```
+
+[実際に生成されたRSS | https://blog.0maru.dev/rss.xml](https://blog.0maru.dev/rss.xml)
+
+シンタックスハイライトも Shiki と Prisma が build-in で対応していて設定さえ書けば簡単に導入出来ます。
+
+```:javascript
+export default defineConfig({
+  markdown: {
+    shikiConfig: {
+      theme: 'github-dark-dimmed',
+      langs: [],
+      wrap: true,
+    },
+  },
+});
 ```
 
 今は検索機能や見出しへのページ内リンクも無いので今後はそういったちょっと便利になるものをコツコツ追加していければと思っています。  
