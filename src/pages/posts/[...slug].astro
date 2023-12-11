@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content'
+import DefaultLayout from '../../layouts/Default.astro'
+import Tag from '../../components/Tag.astro'
+
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('posts')
+  return blogEntries.map(entry => ({
+    params: {slug: entry.slug}, props: {entry},
+  }))
+}
+
+const {entry} = Astro.props
+const {Content} = await entry.render()
+---
+
+<DefaultLayout title={'title'} description={'description'}>
+  <main>
+    {entry.date}
+    <!--<h1 class="mt-md">{entry.date.title}</h1>-->
+    <!--<p class="mt-sm">{entry.date.createdAt}</p>-->
+    <!--<ul style="padding-left: 0">-->
+    <!--  {entry.date.tags.map((tag : string) => {-->
+    <!--    return (-->
+    <!--        <Tag tag={tag} />-->
+    <!--    )-->
+    <!--  })}-->
+    <!--</ul>-->
+    <article class="markdown-body pt-md">
+      <Content />
+    </article>
+  </main>
+</DefaultLayout>

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Post.astro
 title: AstroとCloudflareでブロクを作ってみた
 image: https://blog-images.0maru.dev/fujikokyoto0H0264_TP_V.webp
 createdAt: '2023/12/09'
@@ -48,18 +47,18 @@ import rss from '@astrojs/rss';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 export async function GET(context) {
-  const postImportResult = import.meta.glob('../pages/posts/*.md', {eager: true})
-  const posts = Object.values(postImportResult)
-  return rss({
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    site: context.site,
-    items: posts.map((post) => ({
-        link: post.url,
-        ...post.frontmatter,
-      }),
-    )
-  });
+    const postImportResult = import.meta.glob('../pages/posts/*.md', {eager: true})
+    const posts = Object.values(postImportResult)
+    return rss({
+        title: SITE_TITLE,
+        description: SITE_DESCRIPTION,
+        site: context.site,
+        items: posts.map((post) => ({
+                link: post.url,
+                ...post.frontmatter,
+            }),
+        )
+    });
 }
 
 ```
