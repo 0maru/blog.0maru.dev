@@ -1,7 +1,7 @@
-import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
+import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,4 +12,11 @@ export default defineConfig({
     partytown(),
   ],
   outDir: './dist',
+  markdown: {
+    shikiConfig: {
+      theme: 'dracula',
+      langs: [],
+      wrap: true,
+    },
+  }
 });
