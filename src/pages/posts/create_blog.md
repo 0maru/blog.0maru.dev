@@ -43,6 +43,8 @@ Astro を採用した理由は Markdown で書いた記事を静的な HTML に�
 Astro を使ってみての感想ですが、MarkdownをHTMLに変換する機能が公式でサポートされていて、RSSの生成などもあってブログを作るには十分すぎるくらいの機能があります。
 下記のようにブログ記事の Markdown 一覧を取得する機能が元々備わっているので、データを取得して rss のメソッドに渡すだけです。
 
+[実際に生成されたRSS | https://blog.0maru.dev/rss.xml](https://blog.0maru.dev/rss.xml)
+
 ```javascript
 import rss from '@astrojs/rss';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';

@@ -1,14 +1,11 @@
 ---
-import { Image } from 'astro:assets'
 import DefaultLayout from '../layouts/Default.astro'
-import iconImage from '../images/icon.jpg'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
 ---
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <main>
     <h1>プロフィール</h1>
-    <Image src={iconImage} alt="0maru" class="icon" />
     <p class="mt-md">名前: 0maru</p>
     <p class="mt-md">
       普段は都内の企業でソフトウェアエンジニアをしています。<br />
