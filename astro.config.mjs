@@ -14,7 +14,7 @@ export default defineConfig({
   outDir: './dist',
   markdown: {
     shikiConfig: {
-      theme: 'dracula',
+      theme: 'github-dark-dimmed',
       langs: [],
       wrap: true,
     },
