@@ -1,0 +1,27 @@
+---
+interface Props {
+  tag : string;
+}
+
+const {tag} = Astro.props
+---
+
+<li class="tag">
+  <a href={`/tags/${tag}`}><span class="hash-tag">#</span>{tag}</a>
+</li>
+
+<style>
+  .tag {
+    display: inline-block;
+    background-color: #fafafa;
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.5rem 0;
+    border-radius: 0.5rem;
+  }
+
+  .hash-tag {
+    color: #7cc7e8;
+    font-weight: bold;
+    padding-right: 0.25rem;
+  }
+</style>

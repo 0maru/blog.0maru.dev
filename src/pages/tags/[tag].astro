@@ -19,8 +19,8 @@ const filterdPosts = posts.filter((post) =>
 
 <DefaultLayout title={`${tag}の記事一覧`} description={`${tag}の記事一覧`}>
   <main>
+    <h1>{tag}のタグが付いた記事</h1>
     <section class="container mt-lg">
-      <h2>{tag}のタグが付いた記事</h2>
       <div class="card-container mt-lg">
         {
           filterdPosts.map((post, idx) => {

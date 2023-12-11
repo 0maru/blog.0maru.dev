@@ -1,19 +1,18 @@
 ---
 import DefaultLayout from '../../layouts/Default.astro'
+import Tag from '../../components/Tag.astro'
 const allPosts = await Astro.glob('../../pages/posts/*.md')
 const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())]
 ---
 
 <DefaultLayout title="タグ一覧" description="タグ一覧">
   <main>
+    <h1>タグ一覧</h1>
     <section class="container mt-lg px-md">
-      <h2>タグ一覧</h2>
       <ul style="padding-left: 0">
         {
           tags.map((tag) => (
-            <li class="tag">
-              <a href={`/tags/${tag}`}><span class="hash-tag">#</span>{tag}</a>
-            </li>
+            <Tag tag={tag} />
           ))
         }
       </ul>

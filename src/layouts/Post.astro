@@ -1,5 +1,6 @@
 ---
 import DefaultLayout from './Default.astro'
+import Tag from '../components/Tag.astro'
 interface Props {
   frontmatter : {
     title : string;
@@ -16,11 +17,13 @@ const {frontmatter} = Astro.props
   <main>
     <h1 class="mt-md">{frontmatter.title}</h1>
     <p class="mt-sm">{frontmatter.createdAt}</p>
-    <div class="flex flex-row mt-sm">
+    <ul style="padding-left: 0">
       {frontmatter.tags.map((tag : string) => {
-        return <a class="tag" href={`/tags/${tag}`}>{tag}</a>
+        return (
+          <Tag tag={tag} />
+        )
       })}
-    </div>
+    </ul>
     <article class="markdown-body pt-md">
       <slot />
     </article>
@@ -28,26 +31,8 @@ const {frontmatter} = Astro.props
 </DefaultLayout>
 
 <style>
-  h1 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    line-height: 2;
-  }
-
-  .tag {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-right: 0.5rem;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #c1c1c1;
-    border-radius: 3px;
-    color: #5c5c5c;
-    cursor: pointer;
-  }
-
-  .tag:hover {
-    background-color: #fafafa;
+  ul {
+    margin-bottom: 0;
   }
 </style>
 

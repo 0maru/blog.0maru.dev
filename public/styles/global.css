@@ -3,6 +3,12 @@ html {
   color: #13171b;
 }
 
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 2;
+}
+
 a {
   text-decoration: none;
   color: #13171b;
