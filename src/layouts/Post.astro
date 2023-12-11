@@ -13,34 +13,53 @@ const {frontmatter} = Astro.props
 ---
 
 <DefaultLayout title={frontmatter.title} description={frontmatter.description}>
-  <article class="markdown-body py-md">
-    <h1>{frontmatter.title}</h1>
-    <p>{frontmatter.createdAt}</p>
-    <div class="flex flex-row">
-      {frontmatter.tags.map((tag : string) => {
-        return <a style="margin-right: 0.5rem">{tag}</a>
-      })}
-    </div>
+  <h1 class="mt-md">{frontmatter.title}</h1>
+  <p class="mt-sm">{frontmatter.createdAt}</p>
+  <div class="flex flex-row mt-sm">
+    {frontmatter.tags.map((tag : string) => {
+      return <a class="tag">{tag}</a>
+    })}
+  </div>
+  <article class="markdown-body pt-md">
     <slot />
   </article>
 </DefaultLayout>
 
-<style global>
-  .markdown-body h1 {
+<style>
+  h1 {
     font-size: 1.8rem;
     font-weight: bold;
     line-height: 1.2;
   }
 
+  .tag {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-right: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #c1c1c1;
+    border-radius: 3px;
+    color: #5c5c5c;
+    cursor: pointer;
+  }
+
+  .tag:hover {
+    background-color: #fafafa;
+  }
+</style>
+
+<!-- Markdown にスタイルを当てるのはglobal で書く必要がある -->
+<style global>
   .markdown-body h2 {
-    margin-top: 1rem;
+    margin-top: 2rem;
     font-size: 1.5rem;
     line-height: 1.2;
   }
 
   .markdown-body h3 {
-    margin-top: 1rem;
-    font-size: 1.2rem;
+    margin-top: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
     line-height: 1.2;
   }

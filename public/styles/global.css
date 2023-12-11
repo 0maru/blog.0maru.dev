@@ -3,10 +3,6 @@ html {
   color: #13171b;
 }
 
-body {
-  background-color: #f9f8f7;
-}
-
 a {
   text-decoration: none;
   color: inherit;
@@ -17,7 +13,7 @@ li {
 }
 
 main {
-  max-width: 1280px;
+  max-width: 1260px;
   margin: 0 auto;
 }
 
@@ -85,6 +81,14 @@ main {
 .px-lg {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.mt-sm {
+  margin-top: 0.5rem;
+}
+
+.mt-md {
+  margin-top: 1rem;
 }
 
 .mt-lg {
