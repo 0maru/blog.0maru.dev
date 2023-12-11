@@ -41,6 +41,28 @@ Astro を採用した理由は Markdown で書いた記事を静的な HTML に�
 この記事を書きながらv3 からv4 に更新したので、今のところ最新の Astro を使っています。
 
 Astro を使ってみての感想ですが、MarkdownをHTMLに変換する機能が公式でサポートされていて、RSSの生成などもあってブログを作るには十分すぎるくらいの機能があります。
+下記のようにブログ記事の Markdown 一覧を取得する機能が元々備わっているので、データを取得して rss のメソッドに渡すだけです。
+
+```javascript
+import rss from '@astrojs/rss';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+export async function GET(context) {
+  const postImportResult = import.meta.glob('../pages/posts/*.md', {eager: true})
+  const posts = Object.values(postImportResult)
+  return rss({
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    site: context.site,
+    items: posts.map((post) => ({
+        link: post.url,
+        ...post.frontmatter,
+      }),
+    )
+  });
+}
+
+```
 
 今は検索機能や見出しへのページ内リンクも無いので今後はそういったちょっと便利になるものをコツコツ追加していければと思っています。  
 Storybook とか Astro は関係無いですが記事の内容をそのまま「DALL-E 3」に与えて画像を生成できるようなものも準備したいです。
