@@ -1,7 +1,7 @@
 ---
-import DefaultLayout from '@/layouts/Default.astro'
-import ArticleCard from '@/components/ArticleCard.astro'
-import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts'
+import DefaultLayout from '../layouts/Default.astro'
+import ArticleCard from '../components/ArticleCard.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
 const allPosts = await Astro.glob('../pages/posts/*.md')
 // status がpublish の記事のみ表示する
 const filteredPosts = allPosts.filter((e) => e.frontmatter.status == 'published')
