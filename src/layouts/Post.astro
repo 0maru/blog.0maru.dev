@@ -1,16 +1,16 @@
 ---
-import DefaultLayout from '../layouts/Default.astro'
-import Tag from '../components/Tag.astro'
+import Tag from '../components/Tag.astro';
+import DefaultLayout from '../layouts/Default.astro';
 interface Props {
-  frontmatter : {
-    title : string;
-    description : string;
-    createdAt : string;
-    tags : string[];
+  frontmatter: {
+    title: string;
+    description: string;
+    createdAt: string;
+    tags: string[];
   };
 }
 
-const {frontmatter} = Astro.props
+const {frontmatter} = Astro.props;
 ---
 
 <DefaultLayout title={frontmatter.title} description={frontmatter.description}>
