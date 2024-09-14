@@ -4,7 +4,7 @@ import {SITE_DESCRIPTION, SITE_TITLE} from '../consts';
 import DefaultLayout from '../layouts/Default.astro';
 const allPosts = await Astro.glob('../pages/posts/*.md');
 // status がpublish の記事のみ表示する
-const filteredPosts = allPosts.filter((e) => e.frontmatter.status === 'published');
+const filteredPosts = allPosts.filter((e) => e.frontmatter.status === 'published').reverse();
 ---
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>

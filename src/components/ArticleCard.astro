@@ -12,26 +12,12 @@ const {title, image, createdAt, url, tags, isFirst} = Astro.props;
 ---
 
 <div class="item">
-  <a href={url}>
-    <img src={image} alt={title} />
-  </a>
   <div class="px-sm pt-md pb-sm">
     <a href={url}>
       <h2 class="bold text-wrap-pretty">{title}</h2>
     </a>
   </div>
   <div class="flex flex-row justify-between px-sm">
-    <div class="flex flex-row">
-      {
-        tags.map((tag) => (
-          <div class="px-sm">
-            <a href={`/tags/${tag}`}>
-              <span class="tag text-md pointer">#{tag}</span>
-            </a>
-          </div>
-        ))
-      }
-    </div>
     <p class="text-sm text-right">
       {createdAt.slice(0, 10).replaceAll("-", "/")}
     </p>
