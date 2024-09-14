@@ -4,10 +4,10 @@ https://blog.0maru.dev/
 
 ## Usage
 
-```:pnpm
+```shell
 pnpm i
 ```
 
-```:pnpm
+```shell
 pnpm dev
-``
+```
