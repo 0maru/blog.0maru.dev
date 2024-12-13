@@ -2,12 +2,11 @@
 
 https://blog.0maru.dev/
 
-## Usage
+## 技術スタック
 
-```shell
-pnpm i
-```
+- Astro
+- Cloudflare Pages
 
-```shell
-pnpm dev
-```
+# プロジェクト構成
+
+
