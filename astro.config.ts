@@ -1,11 +1,12 @@
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
-import { defineConfig, squooshImageService } from 'astro/config';
+import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://blog.0maru.dev',
+  trailingSlash: 'never',
   integrations: [
     mdx(),
     sitemap(),
@@ -18,8 +19,5 @@ export default defineConfig({
       langs: [],
       wrap: true,
     },
-  },
-  image: {
-    service: squooshImageService(),
   },
 });
