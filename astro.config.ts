@@ -3,15 +3,13 @@ import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
+import tailwind from '@astrojs/tailwind';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://blog.0maru.dev',
   trailingSlash: 'never',
-  integrations: [
-    mdx(),
-    sitemap(),
-    partytown(),
-  ],
+  integrations: [mdx(), sitemap(), partytown(), tailwind()],
   outDir: './dist',
   markdown: {
     shikiConfig: {
