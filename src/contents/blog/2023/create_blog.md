@@ -1,9 +1,9 @@
 ---
-layout: ../../layouts/Post.astro
+slug: create-astro-cloudflare-pages-blog
 title: AstroとCloudflareでブロクを作ってみた
 image: https://blog-images.0maru.dev/fujikokyoto0H0264_TP_V.webp
 createdAt: '2023/12/09'
-pubDate: 2023-12-09
+pubDate: '2023-12-09'
 tags: [ "Astro", "Cloudflare", "環境" ]
 status: published
 ---
@@ -45,21 +45,21 @@ MarkdownをHTMLに変換する機能は公式でサポートされてい、 RSS�
 
 ```javascript
 import rss from '@astrojs/rss';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import {SITE_DESCRIPTION, SITE_TITLE} from './consts';
 
 export async function GET(context) {
-  const postImportResult = import.meta.glob('../pages/posts/*.md', {eager: true})
-  const posts = Object.values(postImportResult)
-  return rss({
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    site: context.site,
-    items: posts.map((post) => ({
-        link: post.url,
-        ...post.frontmatter,
-      }),
-    )
-  });
+    const postImportResult = import.meta.glob('../pages/posts/*.md', {eager: true})
+    const posts = Object.values(postImportResult)
+    return rss({
+        title: SITE_TITLE,
+        description: SITE_DESCRIPTION,
+        site: context.site,
+        items: posts.map((post) => ({
+                link: post.url,
+                ...post.frontmatter,
+            }),
+        )
+    });
 }
 
 ```
@@ -120,7 +120,7 @@ Cloudflare Pages はGitHubと統合することができて、push したら自�
 デプロイのジョブを確認したい場合はGitHub Actions のworkflow を確認してください。  
 https://github.com/0maru/blog.0maru.dev/blob/main/.github/workflows/deploy.yml
 
-![GitHubActions でデプロイする](../../images/github-actions-build-project.png)
+![GitHubActions でデプロイする](../../../images/github-actions-build-project.png)
 
 ### その他
 

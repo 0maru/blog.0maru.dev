@@ -1,29 +1,24 @@
 ---
+import { getCollection } from 'astro:content';
 import ArticleCard from '../components/ArticleCard.astro';
 import {SITE_DESCRIPTION, SITE_TITLE} from '../consts';
 import DefaultLayout from '../layouts/Default.astro';
-const allPosts = await Astro.glob('../pages/posts/*.md');
-// status がpublish の記事のみ表示する
-const filteredPosts = allPosts.filter((e) => e.frontmatter.status === 'published').reverse();
+
+const allBlogsCollection = await getCollection('blog');
 ---
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <main>
     <section class="card-container container py-md">
-      {
-        filteredPosts.map((post, idx) => {
-          return (
-            <ArticleCard
-              isFirst={idx === 0}
-              title={post.frontmatter.title}
-              image={post.frontmatter.image}
-              createdAt={post.frontmatter.createdAt}
-              url={post.url}
-              tags={post.frontmatter.tags}
-            />
-          )
-        })
-      }
+      {allBlogsCollection.map((blog) => (
+        <ArticleCard
+          title={blog.data.title}
+          image={blog.data.image}
+          createdAt={blog.data.createdAt}
+          url={`/posts/${blog.data.slug}`}
+          tags={[]}
+        />
+      ))}
     </section>
   </main>
 </DefaultLayout>

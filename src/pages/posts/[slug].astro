@@ -1,0 +1,21 @@
+---
+import {getCollection} from 'astro:content';
+import {SITE_DESCRIPTION, SITE_TITLE} from '../../consts';
+import DefaultLayout from '../../layouts/Default.astro';
+import {markHTMLString} from 'astro/dist/runtime/server';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: {slug: post.data.slug},
+    props: {posts: posts},
+  }));
+}
+
+const {slug} = Astro.params;
+const {posts} = Astro.props;
+const post = posts.filter((post) => post.data.slug === slug);
+---
+
+<DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+</DefaultLayout>
