@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import ArticleCard from '../components/ArticleCard.astro';
 import {SITE_DESCRIPTION, SITE_TITLE} from '../consts';
 import DefaultLayout from '../layouts/Default.astro';
+import ArticleCard from "../components/ArticleCard.astro";
 
 const allBlogsCollection = await getCollection('blog');
 ---
@@ -15,8 +15,8 @@ const allBlogsCollection = await getCollection('blog');
           title={blog.data.title}
           image={blog.data.image}
           createdAt={blog.data.createdAt}
-          url={`/posts/${blog.data.slug}`}
-          tags={[]}
+          url=`/posts/${blog.data.slug}`
+          tags={blog.data.tags}
         />
       ))}
     </section>
