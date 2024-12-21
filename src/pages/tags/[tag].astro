@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const {tag} = Astro.params;
 const {posts} = Astro.props;
-const filterdPosts = posts.filter((post) => post.frontmatter.tags.includes(tag));
+const filteredPosts = posts.filter((post) => post.frontmatter.tags.includes(tag));
 ---
 
 <DefaultLayout title={`${tag}の記事一覧`} description={`${tag}の記事一覧`}>
@@ -22,10 +22,9 @@ const filterdPosts = posts.filter((post) => post.frontmatter.tags.includes(tag))
     <section class="container mt-lg">
       <div class="card-container mt-lg">
         {
-          filterdPosts.map((post, idx) => {
+          filteredPosts.map((post, idx) => {
             return (
               <ArticleCard
-                isFirst={idx === 0}
                 title={post.frontmatter.title}
                 image={post.frontmatter.image}
                 createdAt={post.frontmatter.createdAt}

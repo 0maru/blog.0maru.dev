@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import {getCollection} from 'astro:content';
 import ArticleCard from '../components/ArticleCard.astro';
 import {SITE_DESCRIPTION, SITE_TITLE} from '../consts';
 import DefaultLayout from '../layouts/Default.astro';
@@ -8,7 +8,7 @@ const allBlogsCollection = await getCollection('blog');
 ---
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <main>
+  <main class="flex flex-col min-h-svh">
     <section class="card-container container py-md">
       {allBlogsCollection.map((blog) => (
         <ArticleCard

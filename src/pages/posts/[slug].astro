@@ -1,8 +1,7 @@
 ---
-import {getCollection} from 'astro:content';
+import {getCollection, render} from 'astro:content';
 import {SITE_DESCRIPTION, SITE_TITLE} from '../../consts';
 import DefaultLayout from '../../layouts/Default.astro';
-import {markHTMLString} from 'astro/dist/runtime/server';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -14,8 +13,10 @@ export async function getStaticPaths() {
 
 const {slug} = Astro.params;
 const {posts} = Astro.props;
-const post = posts.filter((post) => post.data.slug === slug);
+const entry = posts.filter((post) => post.data.slug === slug);
+const {Content, headings} = await render(entry);
 ---
-
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <p>Published on: {entry.data}</p>
+  <Content />
 </DefaultLayout>
