@@ -15,8 +15,8 @@ const allBlogsCollection = await getCollection('blog');
           title={blog.data.title}
           image={blog.data.image}
           createdAt={blog.data.createdAt}
-          url={`/posts/${blog.data.slug}`}
-          tags={[]}
+          url=`/posts/${blog.data.slug}`
+          tags={blog.data.tags}
         />
       ))}
     </section>
