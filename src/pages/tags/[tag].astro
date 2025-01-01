@@ -7,7 +7,7 @@ export async function getStaticPaths() {
   const tags = [...new Set(allPosts.flatMap((post) => post.frontmatter.tags))];
   return tags.map((tag) => ({
     params: {tag},
-    props: {posts: allPosts}
+    props: {posts: allPosts},
   }));
 }
 
