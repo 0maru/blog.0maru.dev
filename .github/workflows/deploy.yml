@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - 'main'
-  paths:
-    - src/**
-    - public/**
+    paths:
+      - src/**
+      - public/**
 
 permissions:
   contents: read
