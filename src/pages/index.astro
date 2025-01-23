@@ -8,36 +8,23 @@ const allBlogsCollection = await getCollection('blog');
 ---
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <main class="flex flex-col min-h-svh">
-    <section class="card-container container py-md">
-      {allBlogsCollection.map((blog) => (
-        <ArticleCard
+  <main class="max-w-screen-md mx-auto flex flex-col min-h-svh">
+    {allBlogsCollection.map((blog) => (
+        <div class="mt-8">
+          <ArticleCard
           title={blog.data.title}
           image={blog.data.image}
           createdAt={blog.data.createdAt}
           url=`/posts/${blog.data.slug}`
           tags={blog.data.tags}
         />
+        </div>
       ))}
-    </section>
   </main>
 </DefaultLayout>
 
 <style>
   body {
     background-color: #f9f8f7;
-  }
-
-  .card-container {
-    display: grid;
-    gap: 2rem;
-    grid-auto-flow: row;
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 1000px;
-
-    @media screen and (max-width: 768px) {
-      gap: 0;
-      grid-template-columns: 1fr;
-    }
   }
 </style>

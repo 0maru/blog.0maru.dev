@@ -13,11 +13,11 @@ const {title, image, createdAt, url, tags, isFirst} = Astro.props;
 <div class="item">
   <div class="px-sm pt-md pb-sm">
     <a href={url}>
-      <h2 class="bold text-wrap-pretty text-white">{title}</h2>
+      <h2 class="bold text-wrap-pretty text-[#d2d6d7]">{title}</h2>
     </a>
   </div>
   <div class="flex flex-row justify-between px-sm">
-    <p class="text-sm text-right">
+    <p class="text-sm text-right text-text">
       {createdAt.slice(0, 10).replaceAll("-", "/")}
     </p>
   </div>
@@ -63,11 +63,6 @@ const {title, image, createdAt, url, tags, isFirst} = Astro.props;
     overflow: clip;
     border-radius: 0.5rem;
   }
-
-  h2:hover {
-    color: #67b7b2;
-  }
-
   .tag {
     color: #585a63;
   }
