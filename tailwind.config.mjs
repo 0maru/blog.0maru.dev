@@ -4,7 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        blueBlack: '#0a0b12',
+        background: '#0c1417',
+        header: '#1f3037',
+        text: '#d2d6d7',
       },
     },
   },
