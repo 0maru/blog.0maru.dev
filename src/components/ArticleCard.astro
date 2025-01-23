@@ -7,17 +7,17 @@ interface Props {
   tags: string[];
 }
 
-const {title, image, createdAt, url, tags, isFirst} = Astro.props;
+const {title, image, createdAt, url, tags} = Astro.props;
 ---
 
 <div class="item">
   <div class="px-sm pt-md pb-sm">
     <a href={url}>
-      <h2 class="bold text-wrap-pretty text-[#d2d6d7]">{title}</h2>
+      <h2 class="bold text-wrap-pretty text-foreground">{title}</h2>
     </a>
   </div>
   <div class="flex flex-row justify-between px-sm">
-    <p class="text-sm text-right text-text">
+    <p class="text-sm text-right text-foreground">
       {createdAt.slice(0, 10).replaceAll("-", "/")}
     </p>
   </div>
