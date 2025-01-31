@@ -4,17 +4,15 @@ import {SITE_DESCRIPTION, SITE_TITLE} from '../../consts';
 import DefaultLayout from '../../layouts/Default.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: {slug: post.data.slug},
-    props: {posts: posts},
+  const postEntries = await getCollection('blog');
+  return postEntries.map((entry) => ({
+    params: {slug: entry.data.slug},
+    props: entry,
   }));
 }
 
-const {slug} = Astro.params;
-const {posts} = Astro.props;
-const entry = posts.filter((post) => post.data.slug === slug);
-const {Content, headings} = await render(entry);
+const entry = Astro.props;
+const { Content } = await render(entry);
 ---
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <p>Published on: {entry.data}</p>

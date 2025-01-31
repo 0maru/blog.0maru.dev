@@ -10,12 +10,4 @@ export default defineConfig({
   site: 'https://blog.0maru.dev',
   trailingSlash: 'never',
   integrations: [mdx(), sitemap(), partytown(), tailwind()],
-  outDir: './dist',
-  markdown: {
-    shikiConfig: {
-      theme: 'github-dark-dimmed',
-      langs: [],
-      wrap: true,
-    },
-  },
 });
