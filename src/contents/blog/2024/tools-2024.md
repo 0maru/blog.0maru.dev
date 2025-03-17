@@ -1,7 +1,6 @@
 ---
 slug: tools-2024
 title: 開発環境2024
-image: https://blog-images.0maru.dev/fujikokyoto0H0264_TP_V.webp
 createdAt: '2024-12-16'
 pubDate: '2024-12-16'
 tags: [ "開発環境", "tools", "IDE" ]

@@ -1,7 +1,6 @@
 ---
 slug: create-astro-cloudflare-pages-blog
 title: AstroとCloudflareでブロクを作ってみた
-image: https://blog-images.0maru.dev/fujikokyoto0H0264_TP_V.webp
 createdAt: '2023/12/09'
 pubDate: '2023-12-09'
 tags: [ "Astro", "Cloudflare", "環境" ]

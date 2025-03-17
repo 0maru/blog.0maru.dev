@@ -1,7 +1,6 @@
 ---
 slug: best-buy-2024
 title: 2024年買ってよかったもの
-image: https://blog-images.0maru.dev/fujikokyoto0H0264_TP_V.webp
 createdAt: '2025-03-15'
 pubDate: '2025-03-15'
 tags: [ "買ってよかったもの" ]
