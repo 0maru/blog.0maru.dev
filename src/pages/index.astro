@@ -9,7 +9,7 @@ const allBlogsCollection = await getCollection('blog');
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <main class="max-w-screen-md mx-auto flex flex-col min-h-svh">
-    {allBlogsCollection.map((blog) => (
+    {allBlogsCollection.reverse().map((blog) => (
         <div class="mt-8">
           <ArticleCard
           title={blog.data.title}
