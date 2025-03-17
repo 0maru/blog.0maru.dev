@@ -44,6 +44,9 @@ ls やcat はalias で置き換え無理やり使うようにしました。
 ターミナルもiTerm2 を使用していましたが、WezTerm を使うようになりました。  
 Warp やalacritty も試しましたが、日本語入力の面や動作の機敏性などを考えWezTerm を仕様しています。
 
+ランチャーはAlfred からRaycast に乗り換えました。
+拡張機能作るの簡単で色々ショートカットできるように機能作っています！
+
 ## キーボード
 
 HHKB Professional HYBRID Type-S を使用しています。  
