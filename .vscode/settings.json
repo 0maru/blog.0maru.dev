@@ -1,0 +1,18 @@
+{
+  "[javascript]": {
+    "javascript.format.enable": true,
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "javascript.format.enable": true,
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "javascript.format.enable": true,
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[astro]": {
+    "javascript.format.enable": true,
+    "editor.defaultFormatter": "biomejs.biome"
+  }
+}
