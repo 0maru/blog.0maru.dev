@@ -7,7 +7,7 @@ interface Props {
   tags: string[];
 }
 
-const { title, image, createdAt, url, tags } = Astro.props;
+const {title, createdAt, url, tags} = Astro.props;
 const formattedDate = createdAt.slice(0, 10).replaceAll('-', '/');
 ---
 
