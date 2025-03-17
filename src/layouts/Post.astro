@@ -1,34 +1,23 @@
 ---
 import Tag from '../components/Tag.astro';
 import DefaultLayout from '../layouts/Default.astro';
-interface Props {
-  frontmatter: {
-    title: string;
-    description: string;
-    createdAt: string;
-    tags: string[];
-  };
-}
+// interface Props {
+//   frontmatter: {
+//     title: string;
+//     description: string;
+//     createdAt: string;
+//     tags: string[];
+//   };
+// }
 
-const {frontmatter} = Astro.props;
+const { frontmatter } = Astro.props;
 ---
 
-<DefaultLayout title={frontmatter.title} description={frontmatter.description}>
-  <main>
-    <h1 class="mt-md">{frontmatter.title}</h1>
-    <p class="mt-sm">{frontmatter.createdAt}</p>
-    <ul style="padding-left: 0">
-      {frontmatter.tags.map((tag : string) => {
-        return (
-          <Tag tag={tag} />
-        )
-      })}
-    </ul>
-    <article class="markdown-body pt-md">
-      <slot />
-    </article>
-  </main>
-</DefaultLayout>
+<main>
+  <article class="markdown-body pt-md">
+    <slot />
+  </article>
+</main>
 
 <style>
   ul {
@@ -38,6 +27,10 @@ const {frontmatter} = Astro.props;
 
 <!-- Markdown にスタイルを当てるのはglobal で書く必要がある -->
 <style is:global>
+  .markdown-body {
+    color: #e5e7eb;
+  }
+
   .markdown-body h2 {
     margin-top: 2rem;
     font-size: 1.5rem;
@@ -68,12 +61,12 @@ const {frontmatter} = Astro.props;
     margin-top: 0.5rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: #0094C6;
+    color: #0094c6;
     cursor: pointer;
   }
 
   .markdown-body a:hover {
-    text-decoration-color: #0094C6;
+    text-decoration-color: #0094c6;
     text-decoration-line: underline;
     text-decoration-style: solid;
   }
