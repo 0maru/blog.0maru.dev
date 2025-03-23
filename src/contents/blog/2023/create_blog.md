@@ -3,11 +3,11 @@ slug: create-astro-cloudflare-pages-blog
 title: AstroとCloudflareでブロクを作ってみた
 createdAt: '2023/12/09'
 pubDate: '2023-12-09'
-tags: [ "Astro", "Cloudflare", "環境" ]
+tags: ['Astro', 'Cloudflare', '環境']
 status: published
 ---
 
-7年とか8年前から個人ブログを作っては消してを繰り返していましたが、そろそろ本腰をいれて個人ブログを作ろうと思いとやっとこさ作成しました。   
+7年とか8年前から個人ブログを作っては消してを繰り返していましたが、そろそろ本腰をいれて個人ブログを作ろうと思いとやっとこさ作成しました。  
 ~~作り始めてから本格的な公開までなんだかんだで２ヶ月以上掛かっていますが...~~
 
 note とかQiita とかZenn とか大学生の頃から色々わたり歩いて来てここ数年は Zenn を使っていました。  
@@ -23,6 +23,7 @@ Zenn も Markdown で書けて、管理も簡単で投げ銭のような機能�
 https://github.com/0maru/blog.0maru.dev
 
 ## 技術選定について
+
 ---
 
 仕事で使っていない技術を使ってみたいというのもあり、今回は以下の技術を採用しました。  
@@ -47,20 +48,18 @@ import rss from '@astrojs/rss';
 import {SITE_DESCRIPTION, SITE_TITLE} from './consts';
 
 export async function GET(context) {
-    const postImportResult = import.meta.glob('../pages/posts/*.md', {eager: true})
-    const posts = Object.values(postImportResult)
-    return rss({
-        title: SITE_TITLE,
-        description: SITE_DESCRIPTION,
-        site: context.site,
-        items: posts.map((post) => ({
-                link: post.url,
-                ...post.frontmatter,
-            }),
-        )
-    });
+  const postImportResult = import.meta.glob('../pages/posts/*.md', {eager: true});
+  const posts = Object.values(postImportResult);
+  return rss({
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    site: context.site,
+    items: posts.map((post) => ({
+      link: post.url,
+      ...post.frontmatter,
+    })),
+  });
 }
-
 ```
 
 [実際に生成されたRSS | https://blog.0maru.dev/rss.xml](https://blog.0maru.dev/rss.xml)
@@ -131,6 +130,7 @@ UA が終了して GA4 に移行することになったのですが、未だに
 タグ自体はGoogle Tag Manager で管理しています。
 
 ## さいごに
+
 ---
 
 結局このブログがどこまで続くかはわかりませんが、 Astro とか Cloudflare Pages を仕事で使う機会はなかったのでいい経験になりました。
@@ -144,4 +144,4 @@ UA が終了して GA4 に移行することになったのですが、未だに
 に置き換えれるだろし、 新しいフレームワークを触るにはいいんじゃないかな？と思っています。
 
 ブログ作って思ったことは一番むずかしいのはレイアウトでした。  
-素直にテーマとか使っておけばよかったです...  
+素直にテーマとか使っておけばよかったです...
