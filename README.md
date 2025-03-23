@@ -19,5 +19,3 @@ https://blog.0maru.dev/
 - Cloudflare Pages
 
 # プロジェクト構成
-
-

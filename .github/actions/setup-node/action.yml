@@ -1,7 +1,7 @@
 name: Setup Node
 description: 'Set up Node.js and install dependencies'
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - uses: pnpm/action-setup@v2
       with:
@@ -9,9 +9,9 @@ runs:
         run_install: false
     - uses: actions/setup-node@v4
       with:
-        node-version-file: ".tool-versions"
+        node-version-file: '.tool-versions'
         cache: pnpm
-        cache-dependency-path: "pnpm-lock.yaml"
+        cache-dependency-path: 'pnpm-lock.yaml'
     - run: pnpm bootstrap
       shell: bash
     - run: pnpm i
