@@ -5,34 +5,34 @@ const today = new Date();
 ---
 
 <footer class="container">
-  <p class="text-sm"><small>&copy;</small> {today.getFullYear()} 0maru.</p>
-	<div class="social-links">
-		<a href="https://twitter.com/0maru_dev" target="_blank" aria-label="x">
-			<img src={`${IMAGE_CDN_URL}/logo/x-logo-black.svg`} style="width: 20px;height:20px;"/>
-		</a>
-		<a href="https://github.com/0maru" target="_blank" aria-label="GitHub">
-			<img src={`${IMAGE_CDN_URL}/logo/github-mark.svg`} style="width: 20px;height:20px;"/>
-		</div>
-	</a>
+  <p class="text-sm text-white"><small>&copy;</small> {today.getFullYear()} 0maru.</p>
+  <div class="social-links">
+    <a href="https://twitter.com/0maru_dev" target="_blank" aria-label="x">
+      <img src={`${IMAGE_CDN_URL}/logo/x-logo-white.svg`} style="width: 20px;height:20px;" />
+    </a>
+    <a href="https://github.com/0maru" target="_blank" aria-label="GitHub">
+      <img src={`${IMAGE_CDN_URL}/logo/github-mark-white.svg`} style="width: 20px;height:20px;" />
+    </a>
+  </div>
 </footer>
 <style>
-	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
-		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
-	}
+  footer {
+    padding: 2em 1em 6em 1em;
+    background: linear-gradient(var(--gray-gradient)) no-repeat;
+    color: rgb(var(--gray));
+    text-align: center;
+  }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1em;
+  }
+  .social-links a {
+    text-decoration: none;
+    color: rgb(var(--gray));
+  }
+  .social-links a:hover {
+    color: rgb(var(--gray-dark));
+  }
 </style>
