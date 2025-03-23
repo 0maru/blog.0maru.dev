@@ -9,8 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "biome check ./src --write",
-    "lint": "biome lint --write ./src"
+    "check": "biome check --write --no-errors-on-unmatched . && prettier --write .",
+    "lint": "biome lint --write ."
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.0",
