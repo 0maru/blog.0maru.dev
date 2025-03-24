@@ -4,7 +4,7 @@ import {IMAGE_CDN_URL} from '../consts';
 const today = new Date();
 ---
 
-<footer class="container">
+<footer class="w-full min-h-40 pt-8 flex flex-col justify-start items-center bg-header">
   <p class="text-sm text-white"><small>&copy;</small> {today.getFullYear()} 0maru.</p>
   <div class="social-links">
     <a href="https://twitter.com/0maru_dev" target="_blank" aria-label="x">
@@ -16,12 +16,6 @@ const today = new Date();
   </div>
 </footer>
 <style>
-  footer {
-    padding: 2em 1em 6em 1em;
-    background: linear-gradient(var(--gray-gradient)) no-repeat;
-    color: rgb(var(--gray));
-    text-align: center;
-  }
   .social-links {
     display: flex;
     justify-content: center;
