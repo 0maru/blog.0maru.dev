@@ -1,9 +1,9 @@
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
+import tailwind from '@astrojs/tailwind';
 import {defineConfig} from 'astro/config';
 import remarkLinkCard from 'remark-link-card';
-import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,6 +25,6 @@ export default defineConfig({
           shortenUrl: true,
         },
       ],
-    ]
+    ],
   },
 });
