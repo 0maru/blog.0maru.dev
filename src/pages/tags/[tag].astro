@@ -1,6 +1,6 @@
 ---
 import {getCollection} from 'astro:content';
-import ArticleCard from '../../components/ArticleCard.astro';
+import ArticleItem from '../../components/ArticleItem.astro';
 import DefaultLayout from '../../layouts/Default.astro';
 
 export async function getStaticPaths() {
@@ -18,35 +18,29 @@ const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
 ---
 
 <DefaultLayout title={`${tag}の記事一覧`} description={`${tag}の記事一覧`}>
-  <main>
-    <h1>{tag}のタグが付いた記事</h1>
-    <section class="container mt-lg">
-      <div class="card-container mt-lg">
-        {
-          filteredPosts.map((post, idx) => {
-            return (
-              <ArticleCard
+  <main class="max-w-screen-md mx-auto py-8 px-4 sm:px-6">
+    <h1 class="text-2xl text-white font-bold mb-8">{tag}のタグが付いた記事</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="md:col-span-2">
+        <div class="space-y-2">
+          {
+            filteredPosts.map((post) => (
+              <ArticleItem
                 title={post.data.title}
-                image={post.data.image}
                 createdAt={post.data.createdAt}
-                url={post.url}
+                url={`/posts/${post.data.slug}`}
                 tags={post.data.tags}
               />
-            )
-          })
-        }
+            ))
+          }
+        </div>
       </div>
-    </section>
+    </div>
   </main>
 </DefaultLayout>
 
 <style>
-  .card-container {
-    display: grid;
-    gap: 2rem;
-    grid-auto-flow: row;
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 1000px;
-    margin: 0 auto;
+  body {
+    background-color: #121212;
   }
 </style>
