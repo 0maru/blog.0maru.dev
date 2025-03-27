@@ -72,7 +72,6 @@ const {frontmatter} = Astro.props;
   }
 
   .markdown-body img {
-    margin-top: 1rem;
     height: auto;
     object-fit: contain;
   }
@@ -80,5 +79,61 @@ const {frontmatter} = Astro.props;
   .markdown-body pre {
     padding: 0.5rem 1rem;
     border-radius: 0.3rem;
+  }
+
+  .rlc-container {
+    display: grid;
+    grid-template-columns: 1fr 116px;
+    gap: 1rem;
+    background-color: black;
+    border: 1px solid #e5e7ebaa;
+    border-radius: 0.5rem;
+
+    @media (min-width: 60ch) {
+      grid-template-columns: 1fr 220px;
+    }
+  }
+
+  .rlc-container > .rlc-info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .rlc-container > .rlc-info > .rlc-title {
+    color: #e5e7eb;
+    font-weight: bold;
+  }
+
+  .rlc-container > .rlc-info > .rlc-description {
+    color: #e5e7eb;
+    font-size: 0.8rem;
+  }
+
+  .rlc-container > .rlc-info > .rlc-url-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .rlc-container > .rlc-image-container {
+    border-radius: 50%;
+    margin: 0;
+    grid-column: 2;
+    aspect-ratio: 1 / 1;
+    @media (min-width: 60ch) {
+      aspect-ratio: 1.41 / 1;
+    }
+  }
+
+  .rlc-container > .rlc-image-container > .rlc-image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    border-radius: 0 calc(0.5rem - 1px) calc(0.5rem - 1px) 0;
   }
 </style>
