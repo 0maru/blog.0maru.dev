@@ -53,7 +53,7 @@ Logicool SIGNATURE SLIM ワイヤレス キーボード K950GRも一緒に買っ
 分割キーボードとTS 4間の接続に使用。  
 キーボードの側面に端子があるのでL字のケーブルがマッチしている。1,500円未満で2本ついてきて、丈夫そうな見た目もGOOD!!
 
-[Anker USB-C ＆ USB-C ケーブル (L字, 240W, 高耐久ナイロン) 1.8m USB PD対応 MacBook Pro 16インチ iPhone 16 / 15 iPad Pro iPad Air 5 Galaxy S24 / S23 / S22 Pixel LG 他対応 (ブラック 2本)](https://www.amazon.co.jp/dp/B0CHHZ2ZY7)
+https://www.amazon.co.jp/dp/B0CHHZ2ZY7?th=1&linkCode=ll1&tag=0maru-22&linkId=948afba9322e9b0e79b99ad6a433cec3&language=ja_JP&ref_=as_li_ss_tl
 
 ### CalDigit Thunderbolt 4（USB‑C）Pro Cable（1m）
 
@@ -80,7 +80,7 @@ https://shop.caldigit.com/jp/TS4-JP
 iPad Air もiPhone もMacbook Air も充電できて最高。  
 旅行の時も小型なのでかさばらず便利。
 
-https://www.ankerjapan.com/products/a2663
+https://amzn.to/42lfGEn
 
 ### Fargo STEEL TAP 電源タップ
 
