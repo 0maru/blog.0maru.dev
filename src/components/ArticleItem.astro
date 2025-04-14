@@ -18,16 +18,20 @@ const formattedDate = createdAt.slice(0, 10);
         <span class="text-gray-400 text-sm">{formattedDate}</span>
       </div>
       <a href={url} class="block group">
-        <h2 class="text-xl md:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+        <h2
+          class="text-xl md:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors"
+        >
           {title}
         </h2>
       </a>
       <div>
-        {tags.map((tag) => (
-          <span class="inline-block pr-4 py-1 text-sm text-white">
-            # {tag}
-          </span>
-        ))}
+        {
+          tags.map((tag) => (
+            <a href={`/tags/${tag}`} class="inline-block">
+              <span class="inline-block pr-4 py-1 text-sm text-white cursor-pointer"># {tag}</span>
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>
