@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@astrojs/mdx':
         specifier: ^4.2.0
-        version: 4.2.0(astro@5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.0))
+        version: 4.2.0(astro@5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))
       '@astrojs/partytown':
         specifier: ^2.1.4
         version: 2.1.4
@@ -21,11 +21,11 @@ importers:
         specifier: ^3.2.1
         version: 3.2.1
       '@astrojs/tailwind':
-        specifier: ^6.0.1
-        version: 6.0.1(astro@5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.0))(tailwindcss@3.4.17)
+        specifier: ^6.0.2
+        version: 6.0.2(astro@5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))(tailwindcss@3.4.17)
       astro:
         specifier: ^5.7.4
-        version: 5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.0)
+        version: 5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
       remark-link-card:
         specifier: ^1.3.1
         version: 1.3.1
@@ -83,8 +83,8 @@ packages:
   '@astrojs/sitemap@3.2.1':
     resolution: {integrity: sha512-uxMfO8f7pALq0ADL6Lk68UV6dNYjJ2xGUzyjjVj60JLBs5a6smtlkBYv3tQ0DzoqwS7c9n4FUx5lgv0yPo/fgA==}
 
-  '@astrojs/tailwind@6.0.1':
-    resolution: {integrity: sha512-jYrqG6dXwRnS3xUcRIoeYGFB2L2SISuTNaqMMFp0otW55HQ4fhiz941VaE9EVbs49tF2+1aAZCT3xgt2l/j5tQ==}
+  '@astrojs/tailwind@6.0.2':
+    resolution: {integrity: sha512-j3mhLNeugZq6A8dMNXVarUa8K6X9AW+QHU9u3lKNrPLMHhOQ0S7VeWhHwEeJFpEK1BTKEUY1U78VQv2gN6hNGg==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0 || ^5.0.0
       tailwindcss: ^3.0.24
@@ -819,8 +819,8 @@ packages:
     resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
     engines: {node: '>=16'}
 
-  caniuse-lite@1.0.30001707:
-    resolution: {integrity: sha512-3qtRjw/HQSMlDWf+X79N206fepf4SOOU6SQLMaq/0KkZLmSjPxAkBOQQ+FxbHKfHmYLZFfdWsO3KA90ceHPSnw==}
+  caniuse-lite@1.0.30001715:
+    resolution: {integrity: sha512-7ptkFGMm2OAOgvZpwgA4yjQ5SQbrNVGdRjzH0pBdy1Fasvcr+KAeECmbCAECzTuDuoX0FCY8KzUxjf9+9kfZEw==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -1034,8 +1034,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.5.123:
-    resolution: {integrity: sha512-refir3NlutEZqlKaBLK0tzlVLe5P2wDKS7UQt/3SpibizgsRAPOsqQC3ffw1nlv3ze5gjRQZYHoPymgVZkplFA==}
+  electron-to-chromium@1.5.143:
+    resolution: {integrity: sha512-QqklJMOFBMqe46k8iIOwA9l2hz57V2OKMmP5eSWcUvwx+mASAsbU+wkF1pHjn9ZVSBPrsYWr4/W/95y5SwYg2g==}
 
   emoji-regex-xs@1.0.0:
     resolution: {integrity: sha512-LRlerrMYoIDrT6jgpeZ2YYl/L8EulRTt5hQcYjy5AInh7HWXKimpqx68aknBFpGL2+/IcogTcaydJEgaTmOpDg==}
@@ -2436,6 +2436,11 @@ packages:
     engines: {node: '>= 14'}
     hasBin: true
 
+  yaml@2.7.1:
+    resolution: {integrity: sha512-10ULxpnOCQXxJvBgxsn9ptjq6uviG/htZKk9veJGhlqn3w/DxQ631zFF+nlQXLwmImeS5amR2dl2U8sg6U9jsQ==}
+    engines: {node: '>= 14'}
+    hasBin: true
+
   yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
@@ -2532,12 +2537,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.2.0(astro@5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.0))':
+  '@astrojs/mdx@4.2.0(astro@5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.0
       '@mdx-js/mdx': 3.1.0(acorn@8.14.1)
       acorn: 8.14.1
-      astro: 5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.0)
+      astro: 5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
       es-module-lexer: 1.6.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -2571,9 +2576,9 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.23.8
 
-  '@astrojs/tailwind@6.0.1(astro@5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.0))(tailwindcss@3.4.17)':
+  '@astrojs/tailwind@6.0.2(astro@5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))(tailwindcss@3.4.17)':
     dependencies:
-      astro: 5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.0)
+      astro: 5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
       autoprefixer: 10.4.21(postcss@8.5.3)
       postcss: 8.5.3
       postcss-load-config: 4.0.2(postcss@8.5.3)
@@ -3127,7 +3132,7 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro@5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.0):
+  astro@5.7.4(jiti@1.21.6)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1):
     dependencies:
       '@astrojs/compiler': 2.11.0
       '@astrojs/internal-helpers': 0.6.1
@@ -3180,8 +3185,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.15.0
       vfile: 6.0.3
-      vite: 6.3.2(jiti@1.21.6)(yaml@2.7.0)
-      vitefu: 1.0.6(vite@6.3.2(jiti@1.21.6)(yaml@2.7.0))
+      vite: 6.3.2(jiti@1.21.6)(yaml@2.7.1)
+      vitefu: 1.0.6(vite@6.3.2(jiti@1.21.6)(yaml@2.7.1))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.2
@@ -3228,7 +3233,7 @@ snapshots:
   autoprefixer@10.4.21(postcss@8.5.3):
     dependencies:
       browserslist: 4.24.4
-      caniuse-lite: 1.0.30001707
+      caniuse-lite: 1.0.30001715
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.1.1
@@ -3276,8 +3281,8 @@ snapshots:
 
   browserslist@4.24.4:
     dependencies:
-      caniuse-lite: 1.0.30001707
-      electron-to-chromium: 1.5.123
+      caniuse-lite: 1.0.30001715
+      electron-to-chromium: 1.5.143
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.24.4)
 
@@ -3297,7 +3302,7 @@ snapshots:
 
   camelcase@8.0.0: {}
 
-  caniuse-lite@1.0.30001707: {}
+  caniuse-lite@1.0.30001715: {}
 
   ccount@2.0.1: {}
 
@@ -3502,7 +3507,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.123: {}
+  electron-to-chromium@1.5.143: {}
 
   emoji-regex-xs@1.0.0: {}
 
@@ -4664,14 +4669,14 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.49):
     dependencies:
       lilconfig: 3.1.3
-      yaml: 2.7.0
+      yaml: 2.7.1
     optionalDependencies:
       postcss: 8.4.49
 
   postcss-load-config@4.0.2(postcss@8.5.3):
     dependencies:
       lilconfig: 3.1.3
-      yaml: 2.7.0
+      yaml: 2.7.1
     optionalDependencies:
       postcss: 8.5.3
 
@@ -5319,7 +5324,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite@6.3.2(jiti@1.21.6)(yaml@2.7.0):
+  vite@6.3.2(jiti@1.21.6)(yaml@2.7.1):
     dependencies:
       esbuild: 0.25.2
       fdir: 6.4.4(picomatch@4.0.2)
@@ -5330,11 +5335,11 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
       jiti: 1.21.6
-      yaml: 2.7.0
+      yaml: 2.7.1
 
-  vitefu@1.0.6(vite@6.3.2(jiti@1.21.6)(yaml@2.7.0)):
+  vitefu@1.0.6(vite@6.3.2(jiti@1.21.6)(yaml@2.7.1)):
     optionalDependencies:
-      vite: 6.3.2(jiti@1.21.6)(yaml@2.7.0)
+      vite: 6.3.2(jiti@1.21.6)(yaml@2.7.1)
 
   web-namespaces@2.0.1: {}
 
@@ -5384,6 +5389,8 @@ snapshots:
   xxhash-wasm@1.1.0: {}
 
   yaml@2.7.0: {}
+
+  yaml@2.7.1: {}
 
   yargs-parser@21.1.1: {}
 
