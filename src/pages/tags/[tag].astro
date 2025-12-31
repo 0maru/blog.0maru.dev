@@ -18,7 +18,7 @@ const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
 ---
 
 <DefaultLayout title={`${tag}の記事一覧`} description={`${tag}の記事一覧`}>
-  <main class="max-w-screen-md mx-auto py-8 px-4 sm:px-6">
+  <main class="max-w-(--breakpoint-md) mx-auto py-8 px-4 sm:px-6">
     <h1 class="text-2xl text-white font-bold mb-8">{tag}のタグが付いた記事</h1>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="md:col-span-2">
