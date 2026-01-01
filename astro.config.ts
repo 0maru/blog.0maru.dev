@@ -9,7 +9,10 @@ import remarkLinkCard from 'remark-link-card';
 export default defineConfig({
   site: 'https://blog.0maru.dev',
   trailingSlash: 'never',
-  integrations: [mdx(), sitemap(), partytown(), tailwindcss()],
+  integrations: [mdx(), sitemap(), partytown()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   outDir: './dist',
   markdown: {
     shikiConfig: {
