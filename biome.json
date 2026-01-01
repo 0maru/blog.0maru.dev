@@ -7,7 +7,8 @@
       "!**/content.d.ts",
       "!**/.astro",
       "!**/dist",
-      "!**/.claude"
+      "!**/.claude",
+      "!**/*.css"
     ]
   },
   "assist": { "actions": { "source": { "organizeImports": "on" } } },
