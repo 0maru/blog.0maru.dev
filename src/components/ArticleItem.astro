@@ -11,7 +11,9 @@ const {title, createdAt, url, tags} = Astro.props;
 const formattedDate = createdAt.slice(0, 10);
 ---
 
-<article class="bg-header rounded-lg p-6 hover:bg-[#1c2128] transition-colors h-full flex flex-col">
+<article
+  class="bg-header rounded-lg p-6 transition-all h-full flex flex-col border-t-2 border-accent hover:shadow-lg hover:shadow-accent/20"
+>
   <div class="mb-3">
     <span class="text-gray-400 text-sm">{formattedDate}</span>
   </div>
