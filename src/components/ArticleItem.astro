@@ -11,34 +11,24 @@ const {title, createdAt, url, tags} = Astro.props;
 const formattedDate = createdAt.slice(0, 10);
 ---
 
-<article class="article-item pb-6">
-  <div class="flex flex-col md:flex-row gap-4">
-    <div class="w-full md:w-3/4">
-      <div class="mb-2">
-        <span class="text-gray-400 text-sm">{formattedDate}</span>
-      </div>
-      <a href={url} class="block group">
-        <h2
-          class="text-xl md:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors"
-        >
-          {title}
-        </h2>
-      </a>
-      <div>
-        {
-          tags.map((tag) => (
-            <a href={`/tags/${tag}`} class="inline-block">
-              <span class="inline-block pr-4 py-1 text-sm text-white cursor-pointer"># {tag}</span>
-            </a>
-          ))
-        }
-      </div>
-    </div>
+<article class="bg-header rounded-lg p-6 hover:bg-[#1c2128] transition-colors h-full flex flex-col">
+  <div class="mb-3">
+    <span class="text-gray-400 text-sm">{formattedDate}</span>
+  </div>
+  <a href={url} class="block group grow">
+    <h2 class="text-xl font-bold text-white group-hover:text-[#5bbee4] transition-colors mb-4">
+      {title}
+    </h2>
+  </a>
+  <div class="flex flex-wrap gap-2 mt-auto">
+    {
+      tags.map((tag) => (
+        <a href={`/tags/${tag}`} class="inline-block">
+          <span class="inline-block px-3 py-1 text-sm text-white bg-[#21262d] hover:bg-[#2d333b] rounded-full transition-colors">
+            #{tag}
+          </span>
+        </a>
+      ))
+    }
   </div>
 </article>
-
-<style>
-  .article-item:last-child {
-    border-bottom: none;
-  }
-</style>
