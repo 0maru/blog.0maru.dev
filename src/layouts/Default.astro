@@ -41,7 +41,9 @@ const {title, description} = Astro.props;
   </head>
   <body class="bg-background">
     <Header />
-    <slot />
+    <main class="min-h-dvh">
+      <slot />
+    </main>
     <Footer />
     <BodyBottomScript />
   </body>
