@@ -4,29 +4,27 @@ import {IMAGE_CDN_URL} from '../consts';
 const today = new Date();
 ---
 
-<footer class="w-full min-h-40 pt-8 flex flex-col justify-start items-center bg-header">
-  <p class="text-sm text-white"><small>&copy;</small> {today.getFullYear()} 0maru.</p>
-  <div class="social-links">
-    <a href="https://twitter.com/0maru_dev" target="_blank" aria-label="x">
-      <img src={`${IMAGE_CDN_URL}/logo/x-logo-white.svg`} style="width: 20px;height:20px;" />
+<footer class="w-full h-40 pt-8 flex flex-col justify-start items-center bg-header">
+  <p class="flex items-center gap-2 text-sm text-white tracking-widest">
+    &copy;
+    {today.getFullYear()} 0maru.
+  </p>
+  <div class="flex mt-4 gap-4">
+    <a
+      href="https://twitter.com/0maru_dev"
+      target="_blank"
+      aria-label="x"
+      class="grid place-content-center"
+    >
+      <img src={`${IMAGE_CDN_URL}/logo/x-logo-white.svg`} class="h-4 w-4" />
     </a>
-    <a href="https://github.com/0maru" target="_blank" aria-label="GitHub">
-      <img src={`${IMAGE_CDN_URL}/logo/github-mark-white.svg`} style="width: 20px;height:20px;" />
+    <a
+      href="https://github.com/0maru"
+      target="_blank"
+      aria-label="GitHub"
+      class="grid place-content-center"
+    >
+      <img src={`${IMAGE_CDN_URL}/logo/github-mark-white.svg`} class="h-5 w-5" />
     </a>
   </div>
 </footer>
-<style>
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin-top: 1em;
-  }
-  .social-links a {
-    text-decoration: none;
-    color: rgb(var(--gray));
-  }
-  .social-links a:hover {
-    color: rgb(var(--gray-dark));
-  }
-</style>
