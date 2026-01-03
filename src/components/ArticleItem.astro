@@ -12,17 +12,18 @@ const formattedDate = createdAt.slice(0, 10);
 ---
 
 <article
-  class="group bg-header rounded-lg p-6 transition-all h-full flex flex-col border-t-2 border-accent hover:shadow-lg hover:shadow-accent/20"
+  class="group relative bg-header rounded-lg p-6 transition-all h-full flex flex-col border-t-2 border-accent hover:shadow-lg hover:shadow-accent/20"
 >
+  <a href={url} class="absolute inset-0 z-0 rounded-lg"></a>
   <div class="mb-3">
     <span class="text-gray-400 text-sm">{formattedDate}</span>
   </div>
-  <a href={url} class="block group grow">
+  <div class="grow">
     <h2 class="text-xl font-bold text-white group-hover:text-accent transition-colors mb-4">
       {title}
     </h2>
-  </a>
-  <div class="flex flex-wrap gap-2 mt-auto">
+  </div>
+  <div class="flex flex-wrap gap-2 mt-auto relative z-10">
     {
       tags.map((tag) => (
         <a href={`/tags/${tag}`} class="inline-block">
