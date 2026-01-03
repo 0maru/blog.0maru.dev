@@ -28,5 +28,5 @@ body {
   --tw-prose-pre-bg: var(--color-surface);
   --tw-prose-quotes: var(--color-text);
   --tw-prose-quote-borders: var(--color-accent);
-  --tw-prose-hr: var(--color-header);
+  --tw-prose-hr: var(--color-surface);
 }
