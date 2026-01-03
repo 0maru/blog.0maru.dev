@@ -6,6 +6,8 @@
   --color-text: #cfcfd1;
   --color-header: #161b22;
   --color-accent: #5bbee4;
+  --color-surface: #21262d;
+  --color-surface-hover: #2d333b;
 }
 
 body {
