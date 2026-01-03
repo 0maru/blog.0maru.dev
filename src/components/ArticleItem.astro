@@ -12,13 +12,13 @@ const formattedDate = createdAt.slice(0, 10);
 ---
 
 <article
-  class="bg-header rounded-lg p-6 transition-all h-full flex flex-col border-t-2 border-accent hover:shadow-lg hover:shadow-accent/20"
+  class="group bg-header rounded-lg p-6 transition-all h-full flex flex-col border-t-2 border-accent hover:shadow-lg hover:shadow-accent/20"
 >
   <div class="mb-3">
     <span class="text-gray-400 text-sm">{formattedDate}</span>
   </div>
   <a href={url} class="block group grow">
-    <h2 class="text-xl font-bold text-white group-hover:text-[#5bbee4] transition-colors mb-4">
+    <h2 class="text-xl font-bold text-white group-hover:text-accent transition-colors mb-4">
       {title}
     </h2>
   </a>
