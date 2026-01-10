@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - 'main'
+      - "main"
     paths:
       - src/**
       - public/**
@@ -22,11 +22,10 @@ jobs:
       - uses: ./.github/actions/setup-node
       - name: Build Astro
         run: pnpm build
-      - name: Cloudflare Pages Deploy
-        uses: cloudflare/pages-action@v1
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        timeout-minutes: 10
         with:
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: ./apps/app
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          projectName: blog-0maru-dev
-          directory: dist
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
