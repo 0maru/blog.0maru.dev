@@ -1,0 +1,205 @@
+---
+slug: about-3years-flutter-development
+title: 約3年間Flutter で開発してきてのあれやこれや
+createdAt: '2021-12-10'
+pubDate: '2021-12-10'
+tags: ['Flutter', 'CI/CD', '開発環境', '技術']
+status: published
+---
+
+この記事は[株式会社TORICO Advent Calendar 2021](https://qiita.com/advent-calendar/2021/torico) の10日目の記事です。
+
+約一年ぶりくらいの記事になります。
+
+去年や一昨年はFlutter 関係で色々な記事を書いていましたが、最近では状態管理の方法もProvider やReverpod で落ち着いていたり、プラグインも増えて色々なことができるようになってあまり記事を書いていませんでしたが、ここ１年２年で気がついたことや変わったことについて書いていけたらいいな〜と思います。
+
+深夜に走り書きでかきあげました、typo などがあればコメントで教えていただけますと幸いです。
+
+
+
+# CI/CD について
+
+私が最近開発を担当しているアプリではGitHub Actions とCodemagic を使用しています。
+特に特殊な構成ではないので、目新しさはないかもしれませんが、色々と考えていわゆるDXの向上に努めています。
+
+### Github Actions
+
+Github Actions ではPush のたびに `dart analyze .` と`dart format --fix -l 100 .` を実行しています。
+Github Actions とFlutter の組み合わせの場合、 [subosito/flutter-action](https://github.com/subosito/flutter-action) を使っている方が多いかと思いますが、本プロジェクトでは`subosito/flutter-action` を使用していません。
+
+[Flutter の公式ドキュメン](https://docs.flutter.dev/get-started/install/macos#downloading-straight-from-github-instead-of-using-an-archive)に記載されているようにFlutter のインストールはGitHub から行えます。
+`git clone https://github.com/flutter/flutter.git -b stable` でインストールできること利用してubuntu 上にFlutter をインストールして analyze やformat を実行しています。
+サンプルとして実際に動作しているものを掲載しておきます。よかったら参考にしてください。
+
+
+```yaml
+name: Lint & Analyze
+
+on:
+  push:
+    paths-ignore:
+      - "**.md"
+
+jobs:
+  analyze:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pushed commit
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
+          submodules: true
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: "Install Flutter"
+        run: ./.github/workflows/scripts/install-flutter.sh stable
+      - name: "flutter pub get"
+        run: flutter pub get
+      - name: Analyze
+        run: dart analyze . --fatal-infos
+      - name: Format
+        run: dart format --fix -l 100
+```
+
+上記のような書き方は [flutterfire](https://github.com/firebaseextended/flutterfire) を参考にしています。  
+Flutter で有名なライブラリなどは色々なツールを使っていたり、ハッと思わされるような書き方をしているので、一度見てみても面白いかもしれません。
+上記のまま導入して実行してもinstall-flutter.sh に実行権限が無いため、ワークフローが失敗します。
+
+```
+git update-index --add --chmod=+x install-flutter.sh
+```
+
+で実行権限を付与して commit とpush をしてください。
+
+
+
+### [Codemagic](https://codemagic.io/start/)
+
+Codemagic はGitHub 上でリリースタグが作成されると自動的にビルドしてAppStoreConnectとGooglePlayConsole 上にアップロードされるようになっています。
+
+社内テスト用として、TestFlightや Firebase App Distribution を使用していますが、テスト用に検証環境に接続しているアプリをビルドするといったworkflow は準備していません。
+QAの方や運用の方に確認していただく際にはTestFlightや Firebase App Distribution に公開してインストールしていただいています。
+普段はほぼ一人で開発しているため手元でビルドして実機にインストールしステークホルダーの方に確認していただくといったフローで十分なため、テスト用ににビルドするといったworkflow は準備していません。
+複数人いて色々なビルドを作る必要がある場合はPRを作るたびにビルドを実行するWorkflow を用意してもいいかもしれません。
+
+また、弊社でCodemagic を使用している理由としては他の方が開発に携わった際にバージョンとビルド番号に齟齬がないようにといった理由で採用しています。
+互換性を担保するためにビルド番号でサーバーからのレスポンスが変わることがあるので想定したビルド番号より小さいと機能が足りなかったり、逆に大きいと対応出来ていない機能が露出してしまい不具合やお問い合わせに繋がる可能性があるため、ビルド番号の採番はCodemagic に一任しているといった形です。
+ビルド番号はgit の全プランチの総コミット数 + プレフィックスで採番しているので、手元でビルドしてもCodemagic のワークフローの順番にビルドしていけば事故にならない想定ではありますが...
+
+Codemagic上でgit の全プランチの総コミット数 + プレフィックス でビルド番号を採番する際に気をつけていただきたいのが、Codemagic ではビルドするプロジェクトをGitHub などからclone しますが、その際に`--depth=1` がついています。
+`--depth=1` がついていると、最新のコミットしか取得しないため、ビルド番号が 1 + プレフィックスになってしまいます
+そのため、コミットを全件取得するようにするか、github でタグを切った際にビルド番号を採番してpubspec.yaml に反映する必要があります。
+
+https://codemagic.io/start/
+
+# マルチパッケージ
+
+### melos
+
+弊社のほとんどのプロジェクトは何かしらの社内の共通ライブラリに依存しています。
+それはFlutter のプロジェクトも然りです。
+
+Flutter でライブラリを使用するには`pubspec.yaml` にライブラリを追加すると使用できます。
+追加の方法は複数あり、[pub.dev](https://pub.dev) に公開する、git のリポジトリを指定する、path で同じプロジェクト内にあるライブラリを指定するなどがあります。
+３パターンを書き出すと下記のような感じです。
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  packaeg1: ^1.0.0          # pub.dev に公開
+  package2:                 # git 経由
+    git:
+        url: https://...
+        ref: ^1.0.0
+  package3:                 # 同一プロジェクト内に配置
+    path: ../package3
+```
+
+以前はgithub のプライベートリポジトリを指定して使用していましたが、
+最近はpath で指定する方法を好んで使用しており、ディレクトリ構成は下記のようになります。
+
+```
+flutter_app/
+  packages/
+    flutter_app/
+	  lib/
+	  tests/
+	  pubspec.yaml
+    commons/
+	  lib/
+    payment_module/
+      lib/
+```
+
+path で指定すると１つ問題が発生します。
+その問題とは各ライブラリに依存関係を追加したりすると各ライブラリのプロジェクトルートに行って`flutter pub get` をする必要があるということです。
+pub.dev とgit で指定した場合はプロジェクトルートで`flutter pub get` するとライブラリのインストールが完了しますが、path で指定している場合は各ライブラリのルートに行き`flutter pub get` する必要があります。
+
+依存関係が少ない場合には、ディレクトリを移動して`flutter pub get` するだけのスクリプトを書いてもいいかもしれませんが複数のライブラリに依存するとめんどくさいです。
+そういった際に [melos](https://github.com/invertase/melos) があるととても便利です。
+
+melos とは複数のパッケージ(monorepo)を管理するためのCLIツールです。
+melos は始めに `melos bootstrap` というコマンドを実行する必要があります。
+`melos bootstrap` を実行するとmelos がプロジェクト内のpubspec.yaml を探しだし各プロジェクトをmelos CLI で操作できるようになります。
+たとえは下記のようなスクリプトを用意した際に `melos run pub:get` を実行するとpackages内にある各ライブラリで`flutter pub get` が行われるようになります。
+
+```yaml
+packages:
+  - packages/**
+
+scripts:
+  pub:get:
+    run: |
+      melos exec -c 1 \
+        "flutter pub get"
+```
+
+melos のコマンドは複数ありここでは説明しないので気になった方はぜひmelos のドキュメントを読んで見てください。
+https://melos.invertase.dev/commands
+
+ライブラリの指定方法に戻りますが、path で指定した際に一番良いと感じることはライブラリの更新がとても楽だということです。
+以前はgit で指定する方法を使用していましたがgit 経由でインストールしている場合、コードの変更のたびに`git commit & push ` と `flutter pub get` が必要になります。
+melos が出てきたおかげてpath で指定して管理することがとても容易になり、ライブラリのコードを変更し保存するとHotReload が実行されアプリに反映されるといったFlutter のメリットも最大限活かして開発することが出来ています。
+マルチパッケージにしている方は少ないかもしれませんが、アプリが大きくなってきた際にはアプリを分割してぜひmelos を使ってみてください。
+
+https://github.com/invertase/melos
+
+
+# Flutter のバージョン管理について
+
+### fvm
+
+弊社ではできるだけStable チャンネルの最新版を使おうとしており、nullsafty に書き換えたプロジェクトのありますが、まだ対応が完了していないプロジェクトもあります。
+そういったプロジェクトでは [fvm](https://github.com/leoafarias/fvm) を使用してFlutter のバージョン切り替えを行っています。
+[asdf](https://github.com/asdf-vm/asdf) も一時期採用していましたが何かしらの理由で fvm に戻っています。
+
+Flutter のバージョン管理をfvm で行っていると書きましたが、Flutter はまだまだ成長段階で先日リリースされたFlutter 2.8 でもパフォーマンスが向上したり、Dartの新しい構文が取り入れられたりとアップデートすることにメリットがあると考えているので理想系は特定のチャンネルの最新版を追い続けることだと思っています。
+fvm を使って安定した開発を行うことも良いですが、fvm を使わず最新版に上げ続けることも良いのではないでしょうか？
+
+https://github.com/leoafarias/fvm
+
+https://github.com/asdf-vm/asdf
+
+
+# タスクランナー
+
+### Grinder
+
+melos を使い初めてビルドや build_runner の実行はもっぱら melos で行いますが、melos ではシェルスクリプト で書くことになってしまうのである程度行数があったり、ファイル操作が必要な処理に関しては[Grinder](https://github.com/google/grinder.dart) を使用しています。
+用途としてはビルド番号を採番してpubspec.yaml のversion を書き換えたり、テスト実行して特定のファイルをカバレッジの結果から取り除いたりといった感じで使用しています。
+Grinder だと引数を渡せたりするのもいいですね！
+ただGrinder もMelos も標準入力があると動作してくれないので、標準入力がある処理はDart で書いたスクリプトも用意しています。
+
+https://github.com/google/grinder.dart
+
+Grinder については過去に記事を書いているのでサンプルコードなどは下記のリンクより確認してみてください！
+
+https://qiita.com/0maru/items/b134c5ee319e3cac2a99
+
+---
+
+#### 修正情報
+
+* 2021/12/14  
+  typo や諸々の修正
