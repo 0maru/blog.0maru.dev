@@ -11,7 +11,7 @@
       "!**/*.css"
     ]
   },
-  "assist": {"actions": {"source": {"organizeImports": "on"}}},
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "includes": ["**/*.ts", "**/*.js", "**/*.tsx", "**/*.jsx", "**/*.json"],
