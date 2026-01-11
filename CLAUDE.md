@@ -9,6 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 個人ブログサイト (blog.0maru.dev) - Astroベースの静的サイトジェネレーターを使用したMarkdownブログ。Cloudflare Pagesでホスティング。
 
 **技術スタック:**
+
 - Astro v5.5.4 (静的サイトジェネレーター)
 - TypeScript
 - Tailwind CSS (スタイリング)
@@ -38,6 +39,7 @@ pnpm lint   # Biomeのみ実行
 ## アーキテクチャ
 
 ### ディレクトリ構造
+
 ```
 src/
 ├── components/      # Astroコンポーネント（.astro）
@@ -49,11 +51,13 @@ src/
 ```
 
 ### 重要な設定
+
 - **サイトURL**: https://blog.0maru.dev
 - **ビルド出力**: ./dist
 - **Markdownプロセッサ**: remark-link-cardプラグイン（リンクカード自動生成）
 
 ### ルーティング
+
 - `/` - ホームページ（記事一覧）
 - `/posts/[slug]` - 個別記事ページ
 - `/tags/[tag]` - タグ別記事一覧
@@ -63,6 +67,7 @@ src/
 ## コーディング規約
 
 ### フォーマット設定（Biome）
+
 - インデント: スペース2つ
 - 引用符: シングルクォート
 - セミコロン: 必須
@@ -71,6 +76,7 @@ src/
 - 改行コード: LF
 
 ### ファイル編集時の注意
+
 - JavaScript/TypeScript: Biomeルールに従う
 - Markdown/YAML/Astro: Prettierルールに従う
 - コミット前に必ず `pnpm check` を実行
@@ -81,9 +87,9 @@ src/
 2. フロントマターに必須項目を記載:
    ```yaml
    ---
-   title: "記事タイトル"
-   date: "YYYY-MM-DD"
-   tags: ["タグ1", "タグ2"]
+   title: '記事タイトル'
+   date: 'YYYY-MM-DD'
+   tags: ['タグ1', 'タグ2']
    ---
    ```
 3. 記事本文をMarkdownで記述
