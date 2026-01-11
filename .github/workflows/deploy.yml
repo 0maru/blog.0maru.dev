@@ -26,6 +26,5 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         timeout-minutes: 10
         with:
-          workingDirectory: ./apps/app
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
