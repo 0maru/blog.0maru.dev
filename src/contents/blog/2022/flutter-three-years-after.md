@@ -1,0 +1,146 @@
+---
+slug: flutter-three-years-after
+title: 約3年間Flutter で開発してきてのあれやこれや「あれから1年後-」
+createdAt: '2022/12/11'
+pubDate: '2022-12-11'
+tags: ['Flutter', 'Dart', 'CI/CD']
+status: published
+---
+
+この記事は[株式会社TORICO Advent Calendar 2022](https://qiita.com/advent-calendar/2022/torico) の11日目の記事です。
+
+またまた１年ぶりくらいの記事になります。
+
+最近の仕事内容はFlutter でアプリ開発だけではなく、Nuxt.js でウェブフロント、Django でサーバーサイドの開発をしたりと様々です。
+
+もともとアプリはほぼ一人で開発していましたが、今年からメンバーが一人増えて二人体制になりました。
+それに際して、Flutter のプロジェクト周りの整備を行いましたので紹介していこうと思います。
+基本的には[約3年間Flutter で開発してきてのあれやこれや](https://zenn.dev/0maru/articles/262c0f8ad52a0d)から変わっていません。
+CI/CD やタスクランナーに関しては過去の記事を参考にしてください。
+
+## サンプルプロジェクト
+
+コードや設定を掻い摘んでサンプルプロジェクトを作りました。
+実際は、複数プロジェクトで使い回せるように別リポジトリに設定ファイルをまとめたりしていますが、１プロジェクトだけの場合これを見ていただけると設定できると思います。
+
+https://github.com/0maru/advent-calendar-2022-sample-01
+
+## ディレクト構成
+
+ディレクト構成は現時点（2022/12/11) でこのようになっています。
+今年に入って `Dart Code Metrics`、`Makefile`、`husky`、`lint-staged`、`pnpm`、`renovate` が増えました。
+追加したものについてはこの後ツール毎に紹介していきます。
+
+```
+.
+├── analysis_options.yaml
+├── codemagic.yaml
+├── lint-staged.config.js
+├── Makefile
+├── melos.yaml
+├── package.json
+├── packages
+├── pnpm-lock.yaml
+├── pubspec.lock
+├── pubspec.yaml
+├── README.md
+├── renovate.json
+└── scripts
+```
+
+## Dart Code Metrics
+
+[Dart Code Metrics](https://dartcodemetrics.dev/)はlint のルールを増やしてくれる、ライブラリーです。
+`analysis_options.yaml` にルールを追加することで使用できます。
+例えば、末尾にカンマを強制することや、ListView をExpanded がラップすることを警告するなど、フォーマットに関することや、パフォーマンスに関するルールを追加することができます。
+さらに末尾にカンマを強制するルールを、引数が２つ以上の場合のみにカンマを強制するように`analysis_options.yaml` だけで変更することもできます。
+
+```
+dart_code_metrics:
+  anti-patterns:
+    - long-method
+    - long-parameter-list
+  metrics:
+    cyclomatic-complexity: 20
+    maintainability-index: 50
+    maximum-nesting: 5
+    number-of-parameters: 5
+  rule:
+   - prefer-trailing-comma:
+      break-on: 2
+```
+
+ほかにも同様のことができる[very_good_analysis](https://pub.dev/packages/very_good_analysis) がありますが、Dart Code Metrics で困ることがないので、Dart Code Metricsを使っています。とくにこだわりはありません。
+極論 `prefer-trailing-comma` があれば他は無くてもいいくらいに `prefer-trailing-comma` が好きです。
+ここはコンマをつける、ここはつけないみたいな個人の趣向はもうやめて、lint のルールに問答無用で従うようにしました。
+昔は、下記のコードのように短くて、改行する必要が無いと感じるものにはカンマを入れていませんでしたが、今ではすべてに対してカンマを入れるようにしています。
+そうするとここにカンマを入れてくださいや、ここは入れないでくださいみたいな、コーディングガイドを作る必要もなくなり、考えることも減ってとても良くなったと感じます。
+
+```
+Text(
+  'テキスト',
+  style: TextStyle(fontSize: 12, color: Colors.black87),
+)
+```
+
+また、Dart Code Metrics には、未使用のファイルやクラスなどを探し出すツールが付属しています。
+このツールを使ってアプリのお掃除ができるので、アプリが大きくなったときや、色々変更されて古いコードが残っている場合などは使って古いコードを削除すると良いと思います。
+
+## Makefile
+
+Makefile とはビルドツールの一つで、Makefile に記述したコマンドを連続して実行できます。
+Makefile はプロジェクトのセットアップに使用していて、プロジェクトをclone した後に`make` を実行すると、git submodule の初期化やmelos、Grinder など周辺ツールのインストールが連続して行われるようになっています。
+Makefile を採用している理由は、`make` 実行するためになにかコマンドラインツールをインストールする必要が無いといった点です。
+Flutter のビルドにはMakefile ではなく、melos とGrinder を組み合わせたものを使用しています。
+
+## husky + lint-staged
+
+[husky](https://github.com/typicode/husky) は`git hook ライブラリー` と呼ばれるものです。
+[lint-staged](https://github.com/okonet/lint-staged) は `git commit` 時に処理を差し込めるものです。
+
+この２つを組み合わせて、git commit 時に変更が加わっているファイルに対して `dart format --fix -l 100` を実行しています。
+このツールを導入した経緯は、もともとGithub Actions で `dart analyze` を実行していましたが、リンターのルールが守れていないコードをコミットしていると、Github Actions のステータスを見るまで警告に気が付けないことがあったり、　コミットした後、瞬時にリンターの警告が出てくる訳でも無いので、push してGithub Actions まって、ダメだったら修正してでは、時間がもったいないなと思いFlutter のプロジェクトにも導入しました。
+このツールはコミット時に実行されるので、コミットのタイミングでほんの少し待つことになってしまいますが、コミット後の修正コミットを作るなどの手間はなくなりました。
+またlintを実行するファイルの対象はjs のコードで決めることができるので、例えばFreezed で生成したファイルなどの除外することも容易にできます。
+
+## renovate
+
+[renovate](https://github.com/renovatebot/renovate) はライブラリーのアップデートを行ってくれるツールです。
+Github Apps 経由で導入することができます。
+このツールはライブラリーやプラグインの最新バージョンがリリースされた際に、自動的に依存関係の更新のプルリクエストを作ってくれます。
+プルリクエストを作る時間帯も指定できたり、プルリクエストにメンバーをランダムで自動的にアサインすることも可能なツールになっています。
+Github Actions でテストを実行できるようにしておくと、ライブラリーが更新されたブランチでテストができて、その依存関係の更新を取り込んでも良いかなどがわかるようになります。
+
+![](/images/fb2410d9aa2ef0-01.png)
+
+また、特定のライブラリーをアップデートの対象外に設定することも可能で、Firebase 関連のライブラリーはすべてのプロジェクトで自動更新の対象外に設定しています。
+
+```
+{
+  "ignoreDeps": [
+    "cloud_firestore",
+    "firebase_messaging",
+    "firebase_remote_config",
+    "firebase_crashlytics",
+    "firebase_analytics",
+    "firebase_core",
+    "firebase_dynamic_links",
+    "firebase_messaging"
+  ]
+}
+```
+
+このツールを使うことで、コツコツライブラリーのアップデートができてまとめて更新することを考えるととても気が楽です。
+もちろん、アップデートの際には、CHANGELOG を見ることや、動作検証がひつようなので、依存関係の更新処理が完全に手から離れたわけでは無いですが、
+このようなツールを入れなかったらなかなか更新しなかったので、導入してよかったなと感じています。
+
+## 総括
+
+上記で紹介したものは導入して良かったと感じています。
+特に複数人で開発する際に効果を発揮するものだと思いますので、ぜひ上記などのツールを導入して快適はFlutter開発ライフを楽しんでください。
+
+Dart界隈だけを見ていると周辺ツールが物足りないと感じることもありますが、npm やGo を併用しても良いと思っていて、
+今回紹介したツールのようなものは他にもたくさんあるので、色々調べて気になったものは導入してみてください。
+
+今回紹介したツール群を導入しているサンプルプロジェクトを作りましたので、導入に困った場合は参考にしてください。
+https://github.com/0maru/advent-calendar-2022-sample-01
