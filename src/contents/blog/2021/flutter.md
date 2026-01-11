@@ -15,8 +15,6 @@ status: published
 
 深夜に走り書きでかきあげました、typo などがあればコメントで教えていただけますと幸いです。
 
-
-
 # CI/CD について
 
 私が最近開発を担当しているアプリではGitHub Actions とCodemagic を使用しています。
@@ -31,14 +29,13 @@ Github Actions とFlutter の組み合わせの場合、 [subosito/flutter-actio
 `git clone https://github.com/flutter/flutter.git -b stable` でインストールできること利用してubuntu 上にFlutter をインストールして analyze やformat を実行しています。
 サンプルとして実際に動作しているものを掲載しておきます。よかったら参考にしてください。
 
-
 ```yaml
 name: Lint & Analyze
 
 on:
   push:
     paths-ignore:
-      - "**.md"
+      - '**.md'
 
 jobs:
   analyze:
@@ -51,9 +48,9 @@ jobs:
           token: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
           submodules: true
           ref: ${{ github.event.pull_request.head.sha }}
-      - name: "Install Flutter"
+      - name: 'Install Flutter'
         run: ./.github/workflows/scripts/install-flutter.sh stable
-      - name: "flutter pub get"
+      - name: 'flutter pub get'
         run: flutter pub get
       - name: Analyze
         run: dart analyze . --fatal-infos
@@ -70,8 +67,6 @@ git update-index --add --chmod=+x install-flutter.sh
 ```
 
 で実行権限を付与して commit とpush をしてください。
-
-
 
 ### [Codemagic](https://codemagic.io/start/)
 
@@ -107,12 +102,12 @@ Flutter でライブラリを使用するには`pubspec.yaml` にライブラリ
 dependencies:
   flutter:
     sdk: flutter
-  packaeg1: ^1.0.0          # pub.dev に公開
-  package2:                 # git 経由
+  packaeg1: ^1.0.0 # pub.dev に公開
+  package2: # git 経由
     git:
-        url: https://...
-        ref: ^1.0.0
-  package3:                 # 同一プロジェクト内に配置
+      url: https://...
+      ref: ^1.0.0
+  package3: # 同一プロジェクト内に配置
     path: ../package3
 ```
 
@@ -165,7 +160,6 @@ melos が出てきたおかげてpath で指定して管理することがとて
 
 https://github.com/invertase/melos
 
-
 # Flutter のバージョン管理について
 
 ### fvm
@@ -180,7 +174,6 @@ fvm を使って安定した開発を行うことも良いですが、fvm を使
 https://github.com/leoafarias/fvm
 
 https://github.com/asdf-vm/asdf
-
 
 # タスクランナー
 
@@ -201,5 +194,5 @@ https://qiita.com/0maru/items/b134c5ee319e3cac2a99
 
 #### 修正情報
 
-* 2021/12/14  
+- 2021/12/14  
   typo や諸々の修正
