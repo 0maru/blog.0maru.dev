@@ -1,6 +1,6 @@
 ---
 import {getCollection, render} from 'astro:content';
-import {SITE_DESCRIPTION, SITE_TITLE} from '../../consts';
+import {SITE_DESCRIPTION} from '../../consts';
 import DefaultLayout from '../../layouts/Default.astro';
 import PostLayout from '../../layouts/Post.astro';
 
@@ -18,17 +18,124 @@ const {Content} = await render(post);
 
 <DefaultLayout title={post.data.title} description={SITE_DESCRIPTION}>
   <PostLayout>
-    <article class="max-w-screen-md mx-auto py-8 px-4 sm:px-6 md:py-12">
-      <h1 class="text-4xl font-bold">{post.data.title}</h1>
-      <div class="prose prose-lg max-w-none">
-        <Content />
-      </div>
-    </article>
+    <h1 class="text-4xl font-bold text-white mb-2">{post.data.title}</h1>
+    <div class="text-sm text-gray-400 mb-8">{post.data.createdAt}</div>
+    <Content />
   </PostLayout>
 </DefaultLayout>
 
-<style>
-  h1 {
-    color: #e5e7eb;
+<style is:global>
+  /* Remark Link Card customization */
+  .rlc-container {
+    background-color: var(--color-header);
+    border: 1px solid var(--color-surface);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin: 1.5rem 0;
+    text-decoration: none;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 116px;
+    gap: 1rem;
+  }
+
+  @media (min-width: 60ch) {
+    .rlc-container {
+      grid-template-columns: 1fr 220px;
+    }
+  }
+
+  .rlc-container:hover {
+    background-color: var(--color-surface);
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 12px rgba(91, 190, 228, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .rlc-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: normal;
+    grid-column: 1;
+    padding: 1rem;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  .rlc-title {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .rlc-description {
+    color: var(--color-text);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .rlc-url-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .rlc-favicon {
+    width: 16px;
+    height: 16px;
+    margin-top: 0.15rem;
+    margin-bottom: 0;
+  }
+
+  /* Hide favicon if not loaded or broken */
+  .rlc-favicon:not([src]),
+  .rlc-favicon[src=""],
+  .rlc-favicon[src*="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4="] {
+    display: none;
+  }
+
+  .rlc-url {
+    color: var(--color-accent);
+    font-size: 0.75rem;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .rlc-image-container {
+    grid-column: 2;
+    aspect-ratio: 1 / 1;
+  }
+
+  @media (min-width: 60ch) {
+    .rlc-image-container {
+      aspect-ratio: 1.91 / 1;
+    }
+  }
+
+  .rlc-image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    border-radius: 0 8px 8px 0;
   }
 </style>

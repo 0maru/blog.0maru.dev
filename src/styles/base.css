@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-base:
+    'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  --color-background: #0d1117;
+  --color-text: #cfcfd1;
+  --color-header: #161b22;
+  --color-accent: #5bbee4;
+  --color-surface: #21262d;
+  --color-surface-hover: #2d333b;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-base);
+}
+
+/* Prose (Typography) customization */
+.prose {
+  --tw-prose-body: var(--color-text);
+  --tw-prose-headings: #ffffff;
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: #ffffff;
+  --tw-prose-code: var(--color-accent);
+  --tw-prose-pre-code: var(--color-text);
+  --tw-prose-pre-bg: var(--color-surface);
+  --tw-prose-quotes: var(--color-text);
+  --tw-prose-quote-borders: var(--color-accent);
+  --tw-prose-hr: var(--color-surface);
+}

@@ -7,19 +7,18 @@ export async function getStaticPaths() {
   const allPosts = await getCollection('blog');
   const tags = [...new Set(allPosts.flatMap((post) => post.data.tags))];
   return tags.map((tag) => ({
-    params: {tag},
-    props: {posts: allPosts},
+    params: {tag: encodeURIComponent(tag)},
+    props: {posts: allPosts, originalTag: tag},
   }));
 }
 
-const {tag} = Astro.params;
-const {posts} = Astro.props;
-const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
+const {posts, originalTag} = Astro.props;
+const filteredPosts = posts.filter((post) => post.data.tags.includes(originalTag));
 ---
 
-<DefaultLayout title={`${tag}の記事一覧`} description={`${tag}の記事一覧`}>
-  <main class="max-w-screen-md mx-auto py-8 px-4 sm:px-6">
-    <h1 class="text-2xl text-white font-bold mb-8">{tag}のタグが付いた記事</h1>
+<DefaultLayout title={`${originalTag}の記事一覧`} description={`${originalTag}の記事一覧`}>
+  <main class="max-w-(--breakpoint-md) mx-auto py-8 px-4 sm:px-6">
+    <h1 class="text-2xl text-white font-bold mb-8">{originalTag}のタグが付いた記事</h1>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="md:col-span-2">
         <div class="space-y-2">
@@ -38,9 +37,3 @@ const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
     </div>
   </main>
 </DefaultLayout>
-
-<style>
-  body {
-    background-color: #121212;
-  }
-</style>
