@@ -1,0 +1,142 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --font-base:
+    'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  --color-background: #0d1117;
+  --color-text: #cfcfd1;
+  --color-header: #161b22;
+  --color-accent: #5bbee4;
+  --color-surface: #21262d;
+  --color-surface-hover: #2d333b;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-base);
+}
+
+/* Prose (Typography) customization */
+.prose {
+  --tw-prose-body: var(--color-text);
+  --tw-prose-headings: #ffffff;
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: #ffffff;
+  --tw-prose-code: var(--color-accent);
+  --tw-prose-pre-code: var(--color-text);
+  --tw-prose-pre-bg: var(--color-surface);
+  --tw-prose-quotes: var(--color-text);
+  --tw-prose-quote-borders: var(--color-accent);
+  --tw-prose-hr: var(--color-surface);
+}
+
+/* Remark Link Card customization */
+.rlc-container {
+  background-color: var(--color-header);
+  border: 1px solid var(--color-surface);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  margin: 1.5rem 0;
+  text-decoration: none;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 116px;
+  gap: 1rem;
+}
+
+@media (min-width: 60ch) {
+  .rlc-container {
+    grid-template-columns: 1fr 220px;
+  }
+}
+
+.rlc-container:hover {
+  background-color: var(--color-surface);
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(91, 190, 228, 0.15);
+  transform: translateY(-2px);
+}
+
+.rlc-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: normal;
+  grid-column: 1;
+  padding: 1rem;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.rlc-title {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.rlc-description {
+  color: var(--color-text);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rlc-url-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rlc-favicon {
+  width: 16px;
+  height: 16px;
+  margin-top: 0.15rem;
+  margin-bottom: 0;
+}
+
+.rlc-favicon:not([src]),
+.rlc-favicon[src=''],
+.rlc-favicon[src*='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4='] {
+  display: none;
+}
+
+.rlc-url {
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rlc-image-container {
+  grid-column: 2;
+  aspect-ratio: 1 / 1;
+}
+
+@media (min-width: 60ch) {
+  .rlc-image-container {
+    aspect-ratio: 1.91 / 1;
+  }
+}
+
+.rlc-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  border-radius: 0 8px 8px 0;
+}
