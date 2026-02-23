@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "blog-0maru-dev",
+  "compatibility_date": "2026-01-17",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "dir": ".open-next/assets",
+    "binding": "ASSETS"
+  }
+}
