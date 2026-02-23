@@ -21,8 +21,8 @@ jobs:
       - name: Checkout commit
         uses: actions/checkout@v3
       - uses: ./.github/actions/setup-node
-      - name: Build Astro
-        run: pnpm build
+      - name: Build and package for Cloudflare
+        run: pnpm build && npx @opennextjs/cloudflare build
       - name: Deploy Worker
         uses: cloudflare/wrangler-action@v3
         timeout-minutes: 10
