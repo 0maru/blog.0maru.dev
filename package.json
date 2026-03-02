@@ -39,6 +39,6 @@
     "lint-staged": "16.2.7",
     "prettier": "3.8.1",
     "typescript": "5.9.3",
-    "wrangler": "^4.67.0"
+    "wrangler": "^4.69.0"
   }
 }
