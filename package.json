@@ -13,7 +13,7 @@
     "lint": "biome lint --write ."
   },
   "dependencies": {
-    "@next/mdx": "^16.1.6",
+    "@next/mdx": "^16.2.1",
     "@opennextjs/cloudflare": "^1.17.1",
     "@tailwindcss/postcss": "^4.2.1",
     "feed": "^5.2.0",
