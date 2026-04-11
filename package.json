@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@next/mdx": "^16.2.1",
-    "@opennextjs/cloudflare": "^1.17.1",
+    "@opennextjs/cloudflare": "^1.19.1",
     "@tailwindcss/postcss": "^4.2.2",
     "feed": "^5.2.0",
     "gray-matter": "^4.0.3",
