@@ -18,7 +18,7 @@
     "@tailwindcss/postcss": "^4.3.0",
     "feed": "^5.2.1",
     "gray-matter": "^4.0.3",
-    "next": "^16.2.6",
+    "next": "^16.2.9",
     "react": "^19.2.7",
     "react-dom": "^19.2.6",
     "rehype-shiki": "^0.0.9",
